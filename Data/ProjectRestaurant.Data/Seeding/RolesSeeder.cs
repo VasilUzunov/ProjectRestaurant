@@ -4,11 +4,10 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using ProjectRestaurant.Common;
-    using ProjectRestaurant.Data.Models;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
+    using ProjectRestaurant.Common;
+    using ProjectRestaurant.Data.Models;
 
     internal class RolesSeeder : ISeeder
     {

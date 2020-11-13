@@ -3,12 +3,11 @@
     using System;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using ProjectRestaurant.Data.Common.Repositories;
     using ProjectRestaurant.Data.Models;
     using ProjectRestaurant.Services.Data;
     using ProjectRestaurant.Web.ViewModels.Settings;
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class SettingsController : BaseController
     {

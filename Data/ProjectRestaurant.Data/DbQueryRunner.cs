@@ -3,9 +3,8 @@
     using System;
     using System.Threading.Tasks;
 
-    using ProjectRestaurant.Data.Common;
-
     using Microsoft.EntityFrameworkCore;
+    using ProjectRestaurant.Data.Common;
 
     public class DbQueryRunner : IDbQueryRunner
     {

@@ -1,8 +1,8 @@
 ﻿namespace ProjectRestaurant.Data.Configurations
 {
-    using ProjectRestaurant.Data.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using ProjectRestaurant.Data.Models;
 
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {

@@ -6,11 +6,10 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using ProjectRestaurant.Data.Common.Models;
-    using ProjectRestaurant.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using ProjectRestaurant.Data.Common.Models;
+    using ProjectRestaurant.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -25,6 +24,22 @@
         }
 
         public DbSet<Setting> Settings { get; set; }
+
+        public DbSet<Rating> Ratings { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Reservation> Reservations { get; set; }
+
+        public DbSet<Table> Tables { get; set; }
+
+        public DbSet<MenuItem> MenuItems { get; set; }
+
+        public DbSet<ReservationMenu> ReservationMenus { get; set; }
+
+        public DbSet<Favorite> Favorites { get; set; }
+
+        public DbSet<FavoriteMenuItem> FavoriteMenuItems { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
