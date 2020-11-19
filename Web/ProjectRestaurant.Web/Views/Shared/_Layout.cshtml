@@ -52,8 +52,8 @@
                     <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Menu" asp-action="Menu">Menu</a></li>
                     <li><a asp-area="" asp-controller="Contact" asp-action="Contact">Contact</a></li>
-                    <li><a href="#contact">Login</a></li>
-                    <li><a href="#contact">Register</a></li>
+                    <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+                    <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
                     <li class="book-a-table text-center"><a asp-area="" asp-controller="Reservation" asp-action="MakeReservation">Book a table</a></li>
                 </ul>
             </nav>
@@ -63,14 +63,14 @@
             <partial name="_CookieConsentPartial" />
         </div>
     </header>
-    
+
     <div>
 
         <main role="main">
             @this.RenderBody()
         </main>
     </div>
-    
+
     <footer id="footer">
         <div class="footer-top">
             <div class="container">
@@ -86,11 +86,11 @@
                                 <strong>Email:</strong> vasil6062@gmail.com<br>
                             </p>
                             <div class="social-links mt-3">
-                                <a href="https://twitter.com/" class="twitter"><i class="bx bxl-twitter"></i></a>
-                                <a href="https://www.facebook.com/" class="facebook"><i class="bx bxl-facebook"></i></a>
-                                <a href="https://www.instagram.com/" class="instagram"><i class="bx bxl-instagram"></i></a>
-                                <a href="https://www.skype.com/bg/" class="google-plus"><i class="bx bxl-skype"></i></a>
-                                <a href="https://www.linkedin.com/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                                <a href="https://twitter.com/" class="twitter"><i class="bx bxl-twitter" style="color: #cda45e"></i></a>
+                                <a href="https://www.facebook.com/" class="facebook"><i class="bx bxl-facebook" style="color: #cda45e"></i></a>
+                                <a href="https://www.instagram.com/" class="instagram"><i class="bx bxl-instagram" style="color: #cda45e"></i></a>
+                                <a href="https://www.skype.com/bg/" class="google-plus"><i class="bx bxl-skype" style="color: #cda45e"></i></a>
+                                <a href="https://www.linkedin.com/" class="linkedin"><i class="bx bxl-linkedin" style="color: #cda45e"></i></a>
                             </div>
                         </div>
                     </div>
@@ -142,6 +142,8 @@
     <script src="~/lib/aos/aos.js"></script>
 
     <script src="~/js/main.js"></script>
+
+    @await this.RenderSectionAsync("Scripts", required: false)
 
 </body>
 
