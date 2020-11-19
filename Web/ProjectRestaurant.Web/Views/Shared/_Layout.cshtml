@@ -1,58 +1,148 @@
-﻿@using ProjectRestaurant.Common
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
-    <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Pause Restaurant</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="~/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/img/favicon-16x16.png">
+    <link rel="manifest" href="~/img/site.webmanifest">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/icofont/icofont.min.css" rel="stylesheet" />
+    <link href="~/lib/boxicons/css/boxicons.css" rel="stylesheet" />
+    <link href="~/lib/animate.css/animate.min.css" rel="stylesheet" />
+    <link href="~/lib/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/lib/venobox/venobox.css" rel="stylesheet" />
+    <link href="~/lib/aos/aos.css" rel="stylesheet" />
+
+    <link href="~/css/style.css" rel="stylesheet" />
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Reservations" asp-action="Create">Reservation</a>
-                        </li>
-                    </ul>
-                </div>
+    <div id="topbar" class="d-flex align-items-center fixed-top ">
+        <div class="container d-flex flex-wrap">
+            <div class="contact-info mr-auto">
+                <i class="icofont-phone"></i> +359 87 798 0616
+                <span class="d-none d-lg-inline-block"><i class="icofont-clock-time icofont-rotate-180"></i> Mon-Sun: 8:00 AM - 23:00 PM</span>
             </div>
-        </nav>
+            <div class="languages">
+                <ul>
+                    <li>En</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <h1 class="logo mr-auto"><a asp-area="" asp-controller="Home" asp-action="Index">Pause</a></h1>
+
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Menu" asp-action="Menu">Menu</a></li>
+                    <li><a asp-area="" asp-controller="Contact" asp-action="Contact">Contact</a></li>
+                    <li><a href="#contact">Login</a></li>
+                    <li><a href="#contact">Register</a></li>
+                    <li class="book-a-table text-center"><a asp-area="" asp-controller="Reservation" asp-action="MakeReservation">Book a table</a></li>
+                </ul>
+            </nav>
+
+        </div>
+        <div class="fixed-bottom">
+            <partial name="_CookieConsentPartial" />
+        </div>
     </header>
     
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
+    <div>
+
+        <main role="main">
             @this.RenderBody()
         </main>
     </div>
     
-    <footer class="border-top footer text-muted">
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row ">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-info">
+                            <h3>Pause</h3>
+                            <p>
+                                15 Bul. Bulgaria Street <br>
+                                Smolyan 4700, Bulgaria<br><br>
+                                <strong>Phone:</strong> +359 87 798 0616<br>
+                                <strong>Email:</strong> vasil6062@gmail.com<br>
+                            </p>
+                            <div class="social-links mt-3">
+                                <a href="https://twitter.com/" class="twitter"><i class="bx bxl-twitter"></i></a>
+                                <a href="https://www.facebook.com/" class="facebook"><i class="bx bxl-facebook"></i></a>
+                                <a href="https://www.instagram.com/" class="instagram"><i class="bx bxl-instagram"></i></a>
+                                <a href="https://www.skype.com/bg/" class="google-plus"><i class="bx bxl-skype"></i></a>
+                                <a href="https://www.linkedin.com/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6">
+
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <h4>Our Newsletter</h4>
+                        <p>Want the latest and greatest news from our restaurant straight to your inbox? Chuck us your detail and get sweet weekly email.</p>
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
         <div class="container">
-            &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="copyright">
+                &copy; Copyright <strong><span>Pause</span></strong>. All Rights Reserved
+            </div>
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
-    <script src="~/js/site.min.js" asp-append-version="true"></script>
-    @await this.RenderSectionAsync("Scripts", required: false)
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/lib/php-email-form/validate.js"></script>
+    <script src="~/lib/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/lib/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/lib/venobox/venobox.min.js"></script>
+    <script src="~/lib/aos/aos.js"></script>
+
+    <script src="~/js/main.js"></script>
+
 </body>
+
 </html>

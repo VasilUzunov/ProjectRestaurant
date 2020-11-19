@@ -36,4 +36,10 @@
     <ProjectReference Include="..\ProjectRestaurant.Web.Infrastructure\ProjectRestaurant.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\ProjectRestaurant.Web.ViewModels\ProjectRestaurant.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\img\menu.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

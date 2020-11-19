@@ -1,9 +1,203 @@
-﻿@using ProjectRestaurant.Common
-@{
-    this.ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
+<body>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <section id="hero" class="flex-fill d-flex align-items-center">
+        <div class="container position-relative text-center text-lg-left " data-aos="zoom-in" data-aos-delay="100">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1>Welcome to <span>Pause</span></h1>
+                    <h2>Always delivering great food!</h2>
+
+                    <div class="btns">
+                        <a asp-area="" asp-controller="Menu" asp-action="Menu" class="btn-menu animated fadeInUp">Our Menu</a>
+                        <a asp-area="" asp-controller="Reservation" asp-action="MakeReservation" class="btn-menu animated fadeInUp">Book a table</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main id="main">
+        +
+
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="about-img">
+                            <img src="~/img/about.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+                        <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+                        <p class="font-italic">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua.
+                        </p>
+                        <ul>
+                            <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                            <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                            <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                        </ul>
+                        <p>
+                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                            culpa qui officia deserunt mollit anim id est laborum
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section id="why-us" class="why-us">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <p>Why Choose Our Restaurant</p>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-4">
+                        <div class="box" data-aos="zoom-in" data-aos-delay="100">
+                            <span>01</span>
+                            <h4>Good in every way!</h4>
+                            <p>Whether for a romantic dinner, a special occasion or just to enjoy a toast of wine - our restaurant is the best place for shared company!</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mt-4 mt-lg-0">
+                        <div class="box" data-aos="zoom-in" data-aos-delay="200">
+                            <span>02</span>
+                            <h4>Delicious food!</h4>
+                            <p>With us you can always enjoy fresh and delicious food prepared with love by our experienced chefs. You will not regret your choice!</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mt-4 mt-lg-0">
+                        <div class="box" data-aos="zoom-in" data-aos-delay="300">
+                            <span>03</span>
+                            <h4>Best service!</h4>
+                            <p>Our staff is professionally trained and ready to make your visit unforgettable for you to visit us again with a smile on your face!</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <section id="events" class="events">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <p>Organize Your Events in our Restaurant</p>
+                </div>
+
+                <div class="owl-carousel events-carousel" data-aos="fade-up" data-aos-delay="100">
+
+                    <div class="row event-item">
+                        <div class="col-lg-6">
+                            <img src="~/img/event-birthday.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-6 pt-4 pt-lg-0 content">
+                            <h3>Birthday Parties</h3>
+                            <div class="price">
+                                <p><span>$189</span></p>
+                            </div>
+                            <p class="font-italic">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                magna aliqua.
+                            </p>
+                            <ul>
+                                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                            </ul>
+                            <p>
+                                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                velit esse cillum dolore eu fugiat nulla pariatur
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row event-item">
+                        <div class="col-lg-6">
+                            <img src="~/img/event-private.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-6 pt-4 pt-lg-0 content">
+                            <h3>Private Parties</h3>
+                            <div class="price">
+                                <p><span>$290</span></p>
+                            </div>
+                            <p class="font-italic">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                magna aliqua.
+                            </p>
+                            <ul>
+                                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                            </ul>
+                            <p>
+                                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                velit esse cillum dolore eu fugiat nulla pariatur
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row event-item">
+                        <div class="col-lg-6">
+                            <img src="~/img/event-custom.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-6 pt-4 pt-lg-0 content">
+                            <h3>Custom Parties</h3>
+                            <div class="price">
+                                <p><span>$99</span></p>
+                            </div>
+                            <p class="font-italic">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                magna aliqua.
+                            </p>
+                            <ul>
+                                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                                <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                            </ul>
+                            <p>
+                                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                velit esse cillum dolore eu fugiat nulla pariatur
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <section id="testimonials" class="testimonials section-bg">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <p>What they're saying about us</p>
+                </div>
+
+                <div class="owl-carousel testimonials-carousel" data-aos="zoom-in" data-aos-delay="100">
+
+                    <div class="testimonial-item">
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                        <h3>Saul Goodman</h3>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
