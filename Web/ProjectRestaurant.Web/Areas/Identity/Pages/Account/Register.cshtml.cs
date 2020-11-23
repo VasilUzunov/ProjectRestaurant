@@ -74,7 +74,7 @@
             public string LastName { get; set; }
 
             [Required]
-            [StringLength(80, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 20)]
+            [StringLength(80, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 10)]
             [Display(Name = "Address")]
             public string Address { get; set; }
 
@@ -97,7 +97,10 @@
             this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email };
+                var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email,
+                    FirstName = this.Input.FirstName, LastName = this.Input.LastName,
+                    Address = this.Input.Address, PhoneNumber = this.Input.PhoneNumber,
+                };
                 var result = await this._userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
@@ -111,7 +114,7 @@
                         values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: this.Request.Scheme);
 
-                    await this._emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                    await this._emailSender.SendEmailAsync(this.Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     if (this._userManager.Options.SignIn.RequireConfirmedAccount)

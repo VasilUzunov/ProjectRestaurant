@@ -5396,17 +5396,8 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .alert-dark {
-  color: #1b1e21;
-  background-color: #d6d8d9;
-  border-color: #c6c8ca;
-}
-
-.alert-dark hr {
-  border-top-color: #b9bbbe;
-}
-
-.alert-dark .alert-link {
-  color: #040505;
+  color: white;
+  background-color: black;
 }
 
 @-webkit-keyframes progress-bar-stripes {
@@ -8014,7 +8005,7 @@ button.bg-dark:focus {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1030;
+  z-index: 4000;
 }
 
 @supports ((position: -webkit-sticky) or (position: sticky)) {
