@@ -25,17 +25,20 @@
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<ApplicationRole> _roleManager;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<ApplicationRole> roleManager)
         {
-           this._userManager = userManager;
-           this._signInManager = signInManager;
-           this._logger = logger;
-           this._emailSender = emailSender;
+            this._userManager = userManager;
+            this._signInManager = signInManager;
+            this._logger = logger;
+            this._emailSender = emailSender;
+            this._roleManager = roleManager;
         }
 
         [BindProperty]
@@ -97,13 +100,29 @@
             this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email,
-                    FirstName = this.Input.FirstName, LastName = this.Input.LastName,
-                    Address = this.Input.Address, PhoneNumber = this.Input.PhoneNumber,
+                var user = new ApplicationUser
+                {
+                    UserName = this.Input.Email,
+                    Email = this.Input.Email,
+                    FirstName = this.Input.FirstName,
+                    LastName = this.Input.LastName,
+                    Address = this.Input.Address,
+                    PhoneNumber = this.Input.PhoneNumber,
                 };
                 var result = await this._userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
+                    if (!await _roleManager.RoleExistsAsync("Administrator"))
+                    {
+                        await _roleManager.CreateAsync(new ApplicationRole("Administrator"));
+                    }
+
+                    if (!await _roleManager.RoleExistsAsync("User"))
+                    {
+                        await _roleManager.CreateAsync(new ApplicationRole("User"));
+                    }
+
+                    await _userManager.AddToRoleAsync(user, "User");
                     this._logger.LogInformation("User created a new account with password.");
 
                     var code = await this._userManager.GenerateEmailConfirmationTokenAsync(user);

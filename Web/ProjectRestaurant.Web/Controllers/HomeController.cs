@@ -3,18 +3,24 @@
     using System.Diagnostics;
 
     using Microsoft.AspNetCore.Mvc;
+    using ProjectRestaurant.Services.Data;
+    using ProjectRestaurant.Services.Mapping;
     using ProjectRestaurant.Web.ViewModels;
+    using ProjectRestaurant.Web.ViewModels.Administration;
 
     public class HomeController : BaseController
     {
-        public IActionResult Index()
+        private readonly IEventService eventService;
+
+        public HomeController(IEventService eventService)
         {
-            return this.View();
+            this.eventService = eventService;
         }
 
-        public IActionResult Privacy()
+        public IActionResult Index()
         {
-            return this.View();
+            var eventView = this.eventService.GetAll<EventViewModel>();
+            return this.View(eventView);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

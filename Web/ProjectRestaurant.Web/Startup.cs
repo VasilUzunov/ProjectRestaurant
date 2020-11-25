@@ -1,4 +1,6 @@
-﻿namespace ProjectRestaurant.Web
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace ProjectRestaurant.Web
 {
     using System.Reflection;
 
@@ -62,7 +64,7 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IEventService, EventService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

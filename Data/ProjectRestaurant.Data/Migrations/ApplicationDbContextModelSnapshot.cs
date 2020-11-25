@@ -281,6 +281,69 @@ namespace ProjectRestaurant.Data.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("ProjectRestaurant.Data.Models.Event", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("ProjectRestaurant.Data.Models.EventImage", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Extension")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RemoteImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId")
+                        .IsUnique();
+
+                    b.ToTable("EventImages");
+                });
+
             modelBuilder.Entity("ProjectRestaurant.Data.Models.Favorite", b =>
                 {
                     b.Property<int>("Id")
@@ -487,38 +550,6 @@ namespace ProjectRestaurant.Data.Migrations
                     b.ToTable("ReservationMenus");
                 });
 
-            modelBuilder.Entity("ProjectRestaurant.Data.Models.Setting", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("Settings");
-                });
-
             modelBuilder.Entity("ProjectRestaurant.Data.Models.Table", b =>
                 {
                     b.Property<int>("Id")
@@ -595,6 +626,15 @@ namespace ProjectRestaurant.Data.Migrations
                     b.HasOne("ProjectRestaurant.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProjectRestaurant.Data.Models.EventImage", b =>
+                {
+                    b.HasOne("ProjectRestaurant.Data.Models.Event", "Event")
+                        .WithOne("EventImage")
+                        .HasForeignKey("ProjectRestaurant.Data.Models.EventImage", "EventId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

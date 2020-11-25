@@ -23,7 +23,9 @@
         {
         }
 
-        public DbSet<Setting> Settings { get; set; }
+        public DbSet<Event> Events { get; set; }
+
+        public DbSet<EventImage> EventImages { get; set; }
 
         public DbSet<Rating> Ratings { get; set; }
 
@@ -40,6 +42,7 @@
         public DbSet<Favorite> Favorites { get; set; }
 
         public DbSet<FavoriteMenuItem> FavoriteMenuItems { get; set; }
+
 
         public override int SaveChanges() => this.SaveChanges(true);
 
