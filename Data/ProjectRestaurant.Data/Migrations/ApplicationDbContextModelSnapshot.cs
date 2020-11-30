@@ -397,6 +397,34 @@ namespace ProjectRestaurant.Data.Migrations
                     b.ToTable("FavoriteMenuItems");
                 });
 
+            modelBuilder.Entity("ProjectRestaurant.Data.Models.MenuImage", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Extension")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MenuItemId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RemoteImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuItemId")
+                        .IsUnique();
+
+                    b.ToTable("MenuImages");
+                });
+
             modelBuilder.Entity("ProjectRestaurant.Data.Models.MenuItem", b =>
                 {
                     b.Property<int>("Id")
@@ -417,9 +445,6 @@ namespace ProjectRestaurant.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -572,6 +597,11 @@ namespace ProjectRestaurant.Data.Migrations
                     b.Property<int>("NumberOfSeats")
                         .HasColumnType("int");
 
+                    b.Property<string>("ShapeOfTable")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
+
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
@@ -657,6 +687,15 @@ namespace ProjectRestaurant.Data.Migrations
                     b.HasOne("ProjectRestaurant.Data.Models.MenuItem", "MenuItem")
                         .WithMany("FavoriteItems")
                         .HasForeignKey("MenuItemId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProjectRestaurant.Data.Models.MenuImage", b =>
+                {
+                    b.HasOne("ProjectRestaurant.Data.Models.MenuItem", "MenuItem")
+                        .WithOne("MenuImage")
+                        .HasForeignKey("ProjectRestaurant.Data.Models.MenuImage", "MenuItemId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

@@ -23,6 +23,8 @@
         {
         }
 
+        public DbSet<MenuImage> MenuImages { get; set; }
+
         public DbSet<Event> Events { get; set; }
 
         public DbSet<EventImage> EventImages { get; set; }

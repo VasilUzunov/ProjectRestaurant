@@ -16,6 +16,10 @@
         [Range(1, 20)]
         public int NumberOfSeats { get; set; }
 
+        [Required]
+        [MaxLength(10)]
+        public string ShapeOfTable { get; set; }
+
         public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

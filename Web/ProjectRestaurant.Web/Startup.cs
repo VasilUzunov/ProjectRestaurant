@@ -65,6 +65,7 @@ namespace ProjectRestaurant.Web
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<IEventService, EventService>();
+            services.AddTransient<ITableService, TableService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
