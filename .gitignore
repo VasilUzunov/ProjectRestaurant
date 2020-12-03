@@ -345,3 +345,9 @@ healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
+
+# Custom ignore
+.wwwroot/lib/jquery
+.wwwroot/lib/jquery-validation
+.wwwroot/lib/jquery-validation-unobtrusive
+.wwwroot/lib/bootstrap
