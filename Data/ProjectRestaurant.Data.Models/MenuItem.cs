@@ -26,7 +26,7 @@
         public double Price { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(1500)]
         public string Description { get; set; }
 
         public MenuImage MenuImage { get; set; }

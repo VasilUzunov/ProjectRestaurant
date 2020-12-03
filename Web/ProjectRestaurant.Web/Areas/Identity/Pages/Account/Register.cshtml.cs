@@ -96,7 +96,7 @@
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl = returnUrl ?? this.Url.Content("~/");
             this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (this.ModelState.IsValid)
             {
@@ -112,17 +112,17 @@
                 var result = await this._userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
-                    if (!await _roleManager.RoleExistsAsync("Administrator"))
+                    if (!await this._roleManager.RoleExistsAsync("Administrator"))
                     {
-                        await _roleManager.CreateAsync(new ApplicationRole("Administrator"));
+                        await this._roleManager.CreateAsync(new ApplicationRole("Administrator"));
                     }
 
-                    if (!await _roleManager.RoleExistsAsync("User"))
+                    if (!await this._roleManager.RoleExistsAsync("User"))
                     {
-                        await _roleManager.CreateAsync(new ApplicationRole("User"));
+                        await this._roleManager.CreateAsync(new ApplicationRole("User"));
                     }
 
-                    await _userManager.AddToRoleAsync(user, "User");
+                    await this._userManager.AddToRoleAsync(user, "User");
                     this._logger.LogInformation("User created a new account with password.");
 
                     var code = await this._userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -133,8 +133,7 @@
                         values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: this.Request.Scheme);
 
-                    await this._emailSender.SendEmailAsync(this.Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await this._emailSender.SendEmailAsync(this.Input.Email, "Confirm your email",$"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     if (this._userManager.Options.SignIn.RequireConfirmedAccount)
                     {

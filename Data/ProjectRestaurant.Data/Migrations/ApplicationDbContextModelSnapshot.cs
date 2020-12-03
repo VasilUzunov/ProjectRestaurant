@@ -443,8 +443,8 @@ namespace ProjectRestaurant.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(1500)")
+                        .HasMaxLength(1500);
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");

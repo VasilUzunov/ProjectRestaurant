@@ -6,7 +6,7 @@
     using ProjectRestaurant.Services.Data;
     using ProjectRestaurant.Services.Mapping;
     using ProjectRestaurant.Web.ViewModels;
-    using ProjectRestaurant.Web.ViewModels.Administration;
+    using ProjectRestaurant.Web.ViewModels.Event;
 
     public class HomeController : BaseController
     {
