@@ -1,19 +1,23 @@
 ﻿namespace ProjectRestaurant.Web.Controllers
 {
     using System.Diagnostics;
+    using System.Text;
+    using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
     using ProjectRestaurant.Services.Data;
-    using ProjectRestaurant.Services.Mapping;
+    using ProjectRestaurant.Services.Messaging;
     using ProjectRestaurant.Web.ViewModels;
     using ProjectRestaurant.Web.ViewModels.Event;
 
     public class HomeController : BaseController
     {
+        private readonly IEmailSender emailSender;
         private readonly IEventService eventService;
 
-        public HomeController(IEventService eventService)
+        public HomeController(IEventService eventService, IEmailSender emailSender)
         {
+            this.emailSender = emailSender;
             this.eventService = eventService;
         }
 
@@ -28,6 +32,15 @@
         {
             return this.View(
                 new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SendToEmail(string email)
+        {
+            var html = new StringBuilder();
+            html.AppendLine($"<h1>You are subscribed for our newsletter!</h1>");
+            await this.emailSender.SendEmailAsync("vasil6062@abv.bg", "Pause Restaurant", email, "Subscribe", html.ToString());
+            return this.RedirectToAction(nameof(this.Index));
         }
     }
 }

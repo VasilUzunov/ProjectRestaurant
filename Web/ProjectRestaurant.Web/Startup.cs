@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace ProjectRestaurant.Web
+﻿namespace ProjectRestaurant.Web
 {
     using System.Reflection;
 
@@ -63,10 +61,11 @@ namespace ProjectRestaurant.Web
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services
-            services.AddTransient<IEmailSender, NullMessageSender>();
+            services.AddTransient<IEmailSender>(serviceProvider => new SendGridEmailSender(this.configuration["SendGrid:ApiKey"]));
+
             services.AddTransient<IEventService, EventService>();
             services.AddTransient<ITableService, TableService>();
-            services.AddTransient<IMenuService,MenuService>();
+            services.AddTransient<IMenuService, MenuService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
