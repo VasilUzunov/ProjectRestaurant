@@ -344,59 +344,6 @@ namespace ProjectRestaurant.Data.Migrations
                     b.ToTable("EventImages");
                 });
 
-            modelBuilder.Entity("ProjectRestaurant.Data.Models.Favorite", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Favorites");
-                });
-
-            modelBuilder.Entity("ProjectRestaurant.Data.Models.FavoriteMenuItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("FavoriteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MenuItemId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FavoriteId");
-
-                    b.HasIndex("MenuItemId");
-
-                    b.ToTable("FavoriteMenuItems");
-                });
-
             modelBuilder.Entity("ProjectRestaurant.Data.Models.MenuImage", b =>
                 {
                     b.Property<string>("Id")
@@ -530,14 +477,16 @@ namespace ProjectRestaurant.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("TableId")
                         .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -545,34 +494,7 @@ namespace ProjectRestaurant.Data.Migrations
 
                     b.HasIndex("TableId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Reservations");
-                });
-
-            modelBuilder.Entity("ProjectRestaurant.Data.Models.ReservationMenu", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("MenuId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MenuItemId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ReservationId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MenuItemId");
-
-                    b.HasIndex("ReservationId");
-
-                    b.ToTable("ReservationMenus");
                 });
 
             modelBuilder.Entity("ProjectRestaurant.Data.Models.Table", b =>
@@ -669,28 +591,6 @@ namespace ProjectRestaurant.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProjectRestaurant.Data.Models.Favorite", b =>
-                {
-                    b.HasOne("ProjectRestaurant.Data.Models.ApplicationUser", "User")
-                        .WithMany("Favorites")
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("ProjectRestaurant.Data.Models.FavoriteMenuItem", b =>
-                {
-                    b.HasOne("ProjectRestaurant.Data.Models.Favorite", "Favorite")
-                        .WithMany("FavoriteItems")
-                        .HasForeignKey("FavoriteId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("ProjectRestaurant.Data.Models.MenuItem", "MenuItem")
-                        .WithMany("FavoriteItems")
-                        .HasForeignKey("MenuItemId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ProjectRestaurant.Data.Models.MenuImage", b =>
                 {
                     b.HasOne("ProjectRestaurant.Data.Models.MenuItem", "MenuItem")
@@ -721,23 +621,6 @@ namespace ProjectRestaurant.Data.Migrations
                     b.HasOne("ProjectRestaurant.Data.Models.Table", "Table")
                         .WithMany("Reservations")
                         .HasForeignKey("TableId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("ProjectRestaurant.Data.Models.ApplicationUser", "User")
-                        .WithMany("Reservations")
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("ProjectRestaurant.Data.Models.ReservationMenu", b =>
-                {
-                    b.HasOne("ProjectRestaurant.Data.Models.MenuItem", "MenuItem")
-                        .WithMany("Reservations")
-                        .HasForeignKey("MenuItemId");
-
-                    b.HasOne("ProjectRestaurant.Data.Models.Reservation", "Reservation")
-                        .WithMany("MenuItems")
-                        .HasForeignKey("ReservationId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

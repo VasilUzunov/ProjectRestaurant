@@ -14,45 +14,61 @@
             <h2>Reservation</h2>
             <p>Book a Table</p>
         </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="/img/tables-scheme-1.png" class="reservation" alt=""/>
+            </div>
 
-        <form action="" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
-            <div class="form-row">
-                <div class="col-lg-4 col-md-6 form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                    <div class="validate"></div>
-                </div>
-                <div class="col-lg-4 col-md-6 form-group">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
-                    <div class="validate"></div>
-                </div>
-                <div class="col-lg-4 col-md-6 form-group">
-                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                    <div class="validate"></div>
-                </div>
-                <div class="col-lg-4 col-md-6 form-group">
-                    <input type="text" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                    <div class="validate"></div>
-                </div>
-                <div class="col-lg-4 col-md-6 form-group">
-                    <input type="text" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                    <div class="validate"></div>
-                </div>
-                <div class="col-lg-4 col-md-6 form-group">
-                    <input type="number" class="form-control" name="people" id="people" placeholder="# of people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
-                    <div class="validate"></div>
-                </div>
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
-                <div class="validate"></div>
-            </div>
-            <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
-            </div>
-            <div class="text-center"><button type="submit">Book a Table</button></div>
-        </form>
+            <div class="col-lg-6">
+                <form method="post" class="email-form" data-aos="fade-up" data-aos-delay="100">
+                    <div class="form-row">
+                        <div class="col-lg-6 col-md-8 form-group">
+                            <input type="date" class="form-control" style="color: #a49b89" >
+                        </div>
+                        <div class="col-lg-3 col-md-5 form-group">
+                            <select class="form-control" style="border-color: #625b4b; background: #0c0b09; color: #a49b89">
+                                <option disabled selected hidden>Hour</option>
+                                @for (int i = 10; i <= 22; i++)
+                                {
+                                    <option>@i</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-5 form-group">
+                            <select class="form-control" style="border-color: #625b4b; background: #0c0b09; color: #a49b89">
+                                <option disabled selected hidden>Minutes</option>
+                                <option>00</option>
+                                <option>01</option>
+                                <option>02</option>
+                                <option>03</option>
+                                <option>04</option>
+                                <option>05</option>
+                                <option>06</option>
+                                <option>07</option>
+                                <option>08</option>
+                                <option>09</option>
+                                @for (int i = 10; i <= 59; i++)
+                                {
 
+                                    <option>@i</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-6 col-md-8 form-group">
+                            <input type="number" class="form-control" placeholder="Preferred table" >
+                        </div>
+                        <div class="col-lg-6 col-md-8 form-group">
+                            <input type="number" class="form-control" placeholder="# of people" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+                    </div>
+                    <div class="text-center"><button type="submit">Book a Table</button></div>
+                </form>
+            </div>
+        </div>
     </div>
 </section>

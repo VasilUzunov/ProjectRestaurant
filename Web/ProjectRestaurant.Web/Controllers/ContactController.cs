@@ -21,16 +21,16 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Contact(ContactFormViewModel model)
+        public async Task<IActionResult> Contact(ContactFormInputModel input)
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View(model);
+                return this.View(input);
             }
 
-            await this.emailSender.SendEmailAsync("vasil6062@abv.bg", model.Email, "vasil6062@gmail.com", model.Subject + " " + "Name" + " " + model.Name,model.Message);
+            await this.emailSender.SendEmailAsync("vasil6062@abv.bg", input.Email, "vasil6062@gmail.com", input.Subject + " " + "Name" + " " + input.Name,input.Message);
 
-            return this.Redirect("/Contact/Contact");
+            return this.View();
         }
     }
 }

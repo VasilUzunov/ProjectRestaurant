@@ -7,12 +7,6 @@
 
     public class MenuItem : BaseDeletableModel<int>
     {
-        public MenuItem()
-        {
-            this.Reservations = new HashSet<ReservationMenu>();
-            this.FavoriteItems = new HashSet<FavoriteMenuItem>();
-        }
-
         [Required]
         [MaxLength(40)]
         public string Name { get; set; }
@@ -34,9 +28,5 @@
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
-
-        public virtual ICollection<ReservationMenu> Reservations { get; set; }
-
-        public virtual ICollection<FavoriteMenuItem> FavoriteItems { get; set; }
     }
 }
