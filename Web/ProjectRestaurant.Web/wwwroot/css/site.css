@@ -97,3 +97,45 @@ body {
     color: #1a1814;
 }
 
+.vote-button-rate {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    border: 0;
+    background: none;
+    font-size: 20px;
+    padding: 0 20px 2px 20px;
+    background: #cda45e;
+    color: #fff;
+    transition: 0.3s;
+    border-radius: 70px;
+}
+
+.vote-button-rate:hover {
+    background: #d3af71;
+}
+
+.vote-button-close {
+    position: absolute;
+    right: 100px;
+    bottom: 5px;
+    border: 0;
+    background: none;
+    font-size: 19px;
+    padding: 0 20px 2px 20px;
+    background: #708090;
+    color: #fff;
+    transition: 0.3s;
+    border-radius: 60px;
+}
+
+.vote-button-close:hover {
+    background: grey;
+}
+
+.rating-header {
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+

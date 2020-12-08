@@ -9,7 +9,7 @@
 
     public interface IReservationsService
     {
-        Task CreateAsyncMenuItem(ReservationInputModel input);
+        Task CreateAsyncReservation(ReservationInputModel input, string userId);
 
         IEnumerable<T> GetAll<T>();
     }

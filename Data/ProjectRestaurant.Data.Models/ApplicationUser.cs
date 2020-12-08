@@ -18,6 +18,7 @@ namespace ProjectRestaurant.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Ratings = new HashSet<Rating>();
+            this.Reservations = new HashSet<Reservation>();
         }
 
         [Required]
@@ -33,6 +34,8 @@ namespace ProjectRestaurant.Data.Models
         public string Address { get; set; }
 
         public virtual ICollection<Rating> Ratings { get; set; }
+
+        public virtual ICollection<Reservation> Reservations { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }

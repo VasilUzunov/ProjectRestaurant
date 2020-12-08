@@ -488,11 +488,16 @@ namespace ProjectRestaurant.Data.Migrations
                     b.Property<int>("TableId")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("TableId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Reservations");
                 });
@@ -523,6 +528,9 @@ namespace ProjectRestaurant.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(10)")
                         .HasMaxLength(10);
+
+                    b.Property<int>("TableNumber")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -623,6 +631,10 @@ namespace ProjectRestaurant.Data.Migrations
                         .HasForeignKey("TableId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("ProjectRestaurant.Data.Models.ApplicationUser", "User")
+                        .WithMany("Reservations")
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

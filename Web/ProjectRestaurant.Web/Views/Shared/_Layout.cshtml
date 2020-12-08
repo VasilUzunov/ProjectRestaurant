@@ -1,7 +1,4 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-
-<head>
+﻿<head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -25,6 +22,7 @@
     <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/css/style.css" rel="stylesheet" asp-append-version="true" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 
 </head>
@@ -127,12 +125,55 @@
                 &copy; Copyright <strong><span>Pause</span></strong>. All Rights Reserved
             </div>
         </div>
-        
+
         @if (Context.User.Identity.IsAuthenticated)
         {
             <div id="vote"></div>
-            <a href="#" class="vote"><i class="bx bxs-star-half"></i></a>
+            <a data-toggle="modal" data-target="#exampleModalCenter" class="vote"><i class="bx bxs-star-half"></i></a>
         }
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" style="background-color: #0c0b09; color: #a49b89; border-color:#625b4b">
+                    <div class="modal-body">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Rate our restaurant.</h5>
+
+                        <div class="form-group" id="rating-ability-wrapper">
+                            <label class="control-label" for="rating">
+                                <span class="field-label-header">How would you rate our service?</span><br>
+                                <span class="field-label-info"></span>
+                                <input type="hidden" id="selected_rating" name="selected_rating" value="" required="required">
+                            </label>
+                            <h2 class="bold rating-header">
+                                <span class="selected-rating">0</span><small> / 5</small>
+                            </h2>
+                            <button type="button" class="btnrating btn btn-default btn-lg" data-attr="1" id="rating-star-1" style="color: white; border-color: #625b4b">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btnrating btn btn-default btn-lg" data-attr="2" id="rating-star-2" style="color: white; border-color: #625b4b">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btnrating btn btn-default btn-lg" data-attr="3" id="rating-star-3" style="color: white; border-color: #625b4b">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btnrating btn btn-default btn-lg" data-attr="4" id="rating-star-4" style="color: white; border-color: #625b4b">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btnrating btn btn-default btn-lg" data-attr="5" id="rating-star-5" style="color: white; border-color: #625b4b">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" rows="4" placeholder="Write review" style="border-color: #625b4b; background: #0c0b09; color: white"></textarea>
+                        </div>
+                        <div style="margin: 40px 0">
+                            <button type="button" class="vote-button-close" data-dismiss="modal">Close</button>
+                            <button type="submit" class="vote-button-rate">Rate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div id="preloader"></div>
         <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
@@ -145,10 +186,37 @@
     <script src="~/lib/isotope-layout/isotope.pkgd.min.js" asp-append-version="true"></script>
     <script src="~/lib/aos/aos.js" asp-append-version="true"></script>
 
-<script src="~/js/main.js" asp-append-version="true"></script>
+    <script src="~/js/main.js" asp-append-version="true"></script>
 
     @await this.RenderSectionAsync("Scripts", required: false)
 
 </body>
 
-</html>
+<script>
+    jQuery(document).ready(function ($) {
+
+        $(".btnrating").on('click', (function (e) {
+
+            var previous_value = $("#selected_rating").val();
+
+            var selected_value = $(this).attr("data-attr");
+            $("#selected_rating").val(selected_value);
+
+            $(".selected-rating").empty();
+            $(".selected-rating").html(selected_value);
+
+            for (i = 1; i <= selected_value; ++i) {
+                $("#rating-star-" + i).toggleClass('btn-warning');
+                $("#rating-star-" + i).toggleClass('btn-default');
+            }
+
+            for (ix = 1; ix <= previous_value; ++ix) {
+                $("#rating-star-" + ix).toggleClass('btn-warning');
+                $("#rating-star-" + ix).toggleClass('btn-default');
+            }
+
+        }));
+
+
+    });
+</script>
