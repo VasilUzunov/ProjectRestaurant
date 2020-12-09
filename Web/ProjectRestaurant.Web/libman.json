@@ -11,6 +11,14 @@
       ]
     },
     {
+      "library": "jquery.easing@1.4.1",
+      "destination": "wwwroot/lib/jquery.easing/",
+      "files": [
+        "jquery.easing.min.js",
+        "jquery.easing.js"
+      ]
+    },
+    {
       "library": "bootstrap@4.5.3",
       "destination": "wwwroot/lib/bootstrap/",
       "files": [

@@ -12,5 +12,7 @@
         Task CreateAsyncReservation(ReservationInputModel input, string userId);
 
         IEnumerable<T> GetAll<T>();
+
+        string GetPhoneNumber(string userId);
     }
 }

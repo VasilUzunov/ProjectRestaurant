@@ -13,11 +13,13 @@
     {
         private readonly IDeletableEntityRepository<Reservation> reservationRepository;
         private readonly IDeletableEntityRepository<Table> tableRepository;
+        private readonly IDeletableEntityRepository<ApplicationUser> user;
 
-        public ReservationsService(IDeletableEntityRepository<Reservation> reservationRepository, IDeletableEntityRepository<Table> tableRepository)
+        public ReservationsService(IDeletableEntityRepository<Reservation> reservationRepository, IDeletableEntityRepository<Table> tableRepository, IDeletableEntityRepository<ApplicationUser> user)
         {
             this.reservationRepository = reservationRepository;
             this.tableRepository = tableRepository;
+            this.user = user;
         }
 
         public async Task CreateAsyncReservation(ReservationInputModel input, string userId)
@@ -41,6 +43,12 @@
         public IEnumerable<T> GetAll<T>()
         {
             throw new System.NotImplementedException();
+        }
+
+        public string GetPhoneNumber(string userId)
+        {
+            string phone = this.user.AllAsNoTracking().Where(x => x.Id == userId).Select(x => x.PhoneNumber).First();
+            return phone;
         }
     }
 }

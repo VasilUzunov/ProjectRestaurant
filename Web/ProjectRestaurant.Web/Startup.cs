@@ -62,6 +62,8 @@
 
             // Application services
             services.AddTransient<IEmailSender>(serviceProvider => new SendGridEmailSender(this.configuration["SendGrid:ApiKey"]));
+            services.AddTransient<ISmsSender>(serviceProvider =>
+                new SmsSender(this.configuration["Twilio:SID"], this.configuration["Twilio:AuthToken"]));
 
             services.AddTransient<IEventService, EventService>();
             services.AddTransient<ITableService, TableService>();

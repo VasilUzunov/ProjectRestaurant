@@ -1,25 +1,30 @@
-﻿using ProjectRestaurant.Services.Data;
-
-namespace ProjectRestaurant.Web.Controllers
+﻿namespace ProjectRestaurant.Web.Controllers
 {
+    using System;
+    using System.Linq;
     using System.Security.Claims;
+    using System.Text;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using ProjectRestaurant.Data.Models;
+    using ProjectRestaurant.Services.Data;
+    using ProjectRestaurant.Services.Messaging;
     using ProjectRestaurant.Web.ViewModels.Reservation;
 
     public class ReservationController : BaseController
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IReservationsService reservationsService;
+        private readonly ISmsSender smsSender;
 
-        public ReservationController(UserManager<ApplicationUser> userManager, IReservationsService reservationsService)
+        public ReservationController(UserManager<ApplicationUser> userManager, IReservationsService reservationsService, ISmsSender smsSender)
         {
             this.userManager = userManager;
             this.reservationsService = reservationsService;
+            this.smsSender = smsSender;
         }
 
         [Authorize]
@@ -40,7 +45,19 @@ namespace ProjectRestaurant.Web.Controllers
 
             await this.reservationsService.CreateAsyncReservation(input, userId);
 
-            return this.Redirect("/Reservation/MakeReservation");
+            var phone = this.reservationsService.GetPhoneNumber(userId);
+
+            string trimmedPhone = string.Concat(phone.Where(c => !char.IsWhiteSpace(c)));
+
+            var message = new StringBuilder();
+
+            message.AppendLine("Thank for your reservation")
+                .AppendLine($"For: {input.Date} at {input.Hour}:{input.Minutes}")
+                .AppendLine($"Your table is №{input.Table} for {input.NumberOfPeople} people");
+
+            var sms = this.smsSender.SendEmailAsync(trimmedPhone, message.ToString().TrimEnd());
+
+            return this.View();
         }
     }
 }
