@@ -1,0 +1,16 @@
+﻿@model ProjectRestaurant.Web.ViewModels.Menu.MenuInListViewModel
+
+<div class="row" data-aos="fade-up" data-aos-delay="200">
+    @foreach (var item in Model.MenuItems)
+    {
+        <div class="col-lg-6 menu-item">
+            <img src="@item.ImageUrl" class="menu-img" alt="">
+            <div class="menu-content">
+                <span>@item.Name</span><span>$@item.Price</span>
+            </div>
+            <div class="menu-ingredients">
+                @item.Description
+            </div>
+        </div>
+    }
+</div>

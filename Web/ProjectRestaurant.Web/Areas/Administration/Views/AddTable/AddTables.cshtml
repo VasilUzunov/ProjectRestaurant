@@ -1,0 +1,29 @@
+﻿@model ProjectRestaurant.Web.ViewModels.Administration.TableInputModel
+
+<h1 class="text-center">Add Table</h1>
+<form method="post" class="col-md-6 offset-md-3 text-center"  enctype="multipart/form-data">
+    <div class="form-group">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <label asp-for="NumberOfSeats">Number of people</label>
+        <select asp-for="NumberOfSeats" class="form-control" id="exampleFormControlSelect1">
+            @for (int i = 1; i <= 20; i++)
+            {
+                <option>@i</option>  
+            } 
+
+        </select>
+        <span asp-validation-for="NumberOfSeats" class="text-danger"></span>
+
+        <label asp-for="ShapeOfTable">Shape of Table</label>
+        <select asp-for="ShapeOfTable" class="form-control" id="exampleFormControlSelect1">
+            <option>Square</option>
+            <option>Circle</option>
+            <option>Ellipse</option>
+            <option>Rectangle</option>
+        </select>
+        <span asp-validation-for="ShapeOfTable" class="text-danger"></span>
+
+    </div>
+    <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5%">Add</button>
+</form>

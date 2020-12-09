@@ -1,0 +1,47 @@
+﻿@using ProjectRestaurant.Common
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pause Admin</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Pause Admin</a>
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="Administration" asp-controller="AllReservation" asp-action="AllReservations">All Reservations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="Administration" asp-controller="Event" asp-action="AddEvents">Add Event</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="Administration" asp-controller="AddTable" asp-action="AddTables">Add Table</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="Administration" asp-controller="AddToMenu" asp-action="AddToMenu">Add To Menu</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @this.RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
+@await this.RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
