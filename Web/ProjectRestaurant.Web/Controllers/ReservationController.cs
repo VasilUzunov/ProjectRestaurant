@@ -16,13 +16,11 @@
 
     public class ReservationController : BaseController
     {
-        private readonly UserManager<ApplicationUser> userManager;
         private readonly IReservationsService reservationsService;
         private readonly ISmsSender smsSender;
 
-        public ReservationController(UserManager<ApplicationUser> userManager, IReservationsService reservationsService, ISmsSender smsSender)
+        public ReservationController(IReservationsService reservationsService, ISmsSender smsSender)
         {
-            this.userManager = userManager;
             this.reservationsService = reservationsService;
             this.smsSender = smsSender;
         }

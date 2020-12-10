@@ -151,9 +151,9 @@
     });
 
     // Menu list and filter
-    
 
-        // Events carousel (uses the Owl Carousel library)
+
+    // Events carousel (uses the Owl Carousel library)
     $(".events-carousel").owlCarousel({
         autoplay: true,
         dots: true,
@@ -192,3 +192,53 @@
     });
 
 })(jQuery);
+
+jQuery(document).ready(function ($) {
+
+    $(".btnrating").on('click', (function (e) {
+
+        var previous_value = $("#selected_rating").val();
+
+        var selected_value = $(this).attr("data-attr");
+        $("#selected_rating").val(selected_value);
+
+        $(".selected-rating").empty();
+        $(".selected-rating").html(selected_value);
+
+        for (i = 1; i <= selected_value; ++i) {
+            $("#rating-star-" + i).toggleClass('btn-warning');
+            $("#rating-star-" + i).toggleClass('btn-default');
+        }
+
+        for (ix = 1; ix <= previous_value; ++ix) {
+            $("#rating-star-" + ix).toggleClass('btn-warning');
+            $("#rating-star-" + ix).toggleClass('btn-default');
+        }
+
+    }));
+});
+
+var url = '/api/Vote';
+function Func() {
+    var star = $("#selected_rating").val();
+    var description = $('textarea').val();
+    var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
+    var data = { description: description, star: parseInt(star) }
+    $.ajax({
+        type: "Post",
+        url: url,
+        data: JSON.stringify(data),
+        headers: {
+            'X-CSRF-TOKEN': antiForgeryToken
+        },
+        contentType: 'application/json'
+    });
+
+    for (i = 1; i <= star; ++i) {
+        $("#rating-star-" + i).toggleClass('btn-warning');
+        $("#rating-star-" + i).toggleClass('btn-default');
+    }
+
+    $('textarea').val('')
+    $('#exampleModalCenter').modal('hide');
+};

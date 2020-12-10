@@ -17,7 +17,6 @@ namespace ProjectRestaurant.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
-            this.Ratings = new HashSet<Rating>();
             this.Reservations = new HashSet<Reservation>();
         }
 
@@ -33,7 +32,7 @@ namespace ProjectRestaurant.Data.Models
         [MaxLength(80)]
         public string Address { get; set; }
 
-        public virtual ICollection<Rating> Ratings { get; set; }
+        public Rating Rating { get; set; }
 
         public virtual ICollection<Reservation> Reservations { get; set; }
 
