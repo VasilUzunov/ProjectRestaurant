@@ -1,5 +1,7 @@
-﻿<body>
-<section id="hero" class="flex-fill d-flex align-items-center">
+﻿@model ProjectRestaurant.Web.ViewModels.NewFolder.HomeViewModel
+
+<body>
+    <section id="hero" class="flex-fill d-flex align-items-center">
         <div class="container position-relative text-center text-lg-left " data-aos="zoom-in" data-aos-delay="100">
             <div class="row">
                 <div class="col-lg-8">
@@ -96,7 +98,7 @@
                 </div>
 
                 <div class="owl-carousel events-carousel" data-aos="fade-up" data-aos-delay="100">
-                    @foreach (var events in Model)
+                    @foreach (var events in Model.Events)
                     {
                         <div class="row event-item">
                             <div class="col-lg-6">
@@ -125,16 +127,28 @@
                 </div>
 
                 <div class="owl-carousel testimonials-carousel" data-aos="zoom-in" data-aos-delay="100">
-
-                    <div class="testimonial-item">
-                        <p>
-                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                            Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                        </p>
-                        <h3>Saul Goodman</h3>
-                    </div>
-
+                    @foreach (var votes in Model.Votes)
+                    {
+                        <div class="testimonial-item text-center">
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                @votes.Description
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                            <h3 style="margin-right: 45px">@votes.UserFirstName @votes.UserLastName</h3>
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                if (@votes.Star >= i)
+                                {
+                                    <i class="fa fa-star" style="color: #ffc107"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa fa-star"></i>
+                                }
+                            }
+                        </div>
+                    }
                 </div>
 
             </div>

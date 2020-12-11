@@ -138,4 +138,25 @@ body {
     margin-bottom: 10px;
 }
 
+.nav-menu-btn {
+    position: relative;
+    top: 8px;
+    display: block;
+    position: relative;
+    color: white;
+    transition: 0.3s;
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.nav-menu-btn:hover{
+    color: #d9ba85;
+}
+
+.mobile-nav .nav-menu-btn {
+    padding-left: 20px;
+    font-weight: 500;
+    font-size: 15px;
+}
+
 

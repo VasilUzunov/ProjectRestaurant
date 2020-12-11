@@ -9,22 +9,30 @@
     using ProjectRestaurant.Services.Messaging;
     using ProjectRestaurant.Web.ViewModels;
     using ProjectRestaurant.Web.ViewModels.Event;
+    using ProjectRestaurant.Web.ViewModels.NewFolder;
+    using ProjectRestaurant.Web.ViewModels.Vote;
 
     public class HomeController : BaseController
     {
         private readonly IEmailSender emailSender;
+        private readonly IVoteService voteService;
+        private readonly ISubscribeService subscribeService;
         private readonly IEventService eventService;
 
-        public HomeController(IEventService eventService, IEmailSender emailSender)
+        public HomeController(IEventService eventService, IEmailSender emailSender, IVoteService voteService, ISubscribeService subscribeService)
         {
             this.emailSender = emailSender;
+            this.voteService = voteService;
+            this.subscribeService = subscribeService;
             this.eventService = eventService;
         }
 
         public IActionResult Index()
         {
             var eventView = this.eventService.GetAll<EventViewModel>();
-            return this.View(eventView);
+            var voteView = this.voteService.GetAll<VoteViewModel>();
+            var homeView = new HomeViewModel { Events = eventView, Votes = voteView };
+            return this.View(homeView);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -37,6 +45,7 @@
         [HttpPost]
         public async Task<IActionResult> SendToEmail(string email)
         {
+            await this.subscribeService.AddAsyncSubscriber(email);
             var html = new StringBuilder();
             html.AppendLine($"<h1>You are subscribed for our newsletter!</h1>");
             await this.emailSender.SendEmailAsync("vasil6062@abv.bg", "Pause Restaurant", email, "Subscribe", html.ToString());

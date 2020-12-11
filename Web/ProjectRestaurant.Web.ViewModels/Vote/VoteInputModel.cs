@@ -6,7 +6,7 @@
     {
         [Required]
         [MinLength(5)]
-        [MaxLength(200)]
+        [MaxLength(1000)]
         public string Description { get; set; }
 
         [Required]
