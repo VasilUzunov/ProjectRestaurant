@@ -21,7 +21,7 @@
         [HttpPost]
         public async Task Post(VoteInputModel input)
         {
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             await this.voteService.SetVoteAsync(userId, input.Star, input.Description);
         }
     }

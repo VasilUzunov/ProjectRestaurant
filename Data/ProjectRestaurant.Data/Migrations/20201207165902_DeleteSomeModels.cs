@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace ProjectRestaurant.Data.Migrations
+﻿namespace ProjectRestaurant.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class DeleteSomeModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,7 +34,7 @@ namespace ProjectRestaurant.Data.Migrations
                 table: "Reservations",
                 maxLength: 200,
                 nullable: false,
-                defaultValue: "");
+                defaultValue: " ");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -58,7 +59,7 @@ namespace ProjectRestaurant.Data.Migrations
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                 },
                 constraints: table =>
                 {
@@ -79,7 +80,7 @@ namespace ProjectRestaurant.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MenuId = table.Column<int>(type: "int", nullable: false),
                     MenuItemId = table.Column<int>(type: "int", nullable: true),
-                    ReservationId = table.Column<int>(type: "int", nullable: false)
+                    ReservationId = table.Column<int>(type: "int", nullable: false),
                 },
                 constraints: table =>
                 {
@@ -105,7 +106,7 @@ namespace ProjectRestaurant.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FavoriteId = table.Column<int>(type: "int", nullable: false),
-                    MenuItemId = table.Column<int>(type: "int", nullable: false)
+                    MenuItemId = table.Column<int>(type: "int", nullable: false),
                 },
                 constraints: table =>
                 {

@@ -1,6 +1,5 @@
 ﻿namespace ProjectRestaurant.Web.ViewModels.Vote
 {
-
     using ProjectRestaurant.Data.Models;
     using ProjectRestaurant.Services.Mapping;
 

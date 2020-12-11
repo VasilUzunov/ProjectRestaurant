@@ -1,6 +1,4 @@
-﻿using ProjectRestaurant.Data.Common.Models;
-
-namespace ProjectRestaurant.Services.Data
+﻿namespace ProjectRestaurant.Services.Data
 {
     using System;
     using System.Collections.Generic;

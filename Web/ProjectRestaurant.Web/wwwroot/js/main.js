@@ -218,15 +218,14 @@ jQuery(document).ready(function ($) {
     }));
 });
 
-var url = '/api/Vote';
 function Func() {
     var star = $("#selected_rating").val();
-    var description = $('textarea').val();
-    var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
+    var description = $("textarea").val();
+    var antiForgeryToken = $("#antiForgeryForm input[name=__RequestVerificationToken]").val();
     var data = { description: description, star: parseInt(star) }
     $.ajax({
         type: "Post",
-        url: url,
+        url: "/api/Vote",
         data: JSON.stringify(data),
         headers: {
             'X-CSRF-TOKEN': antiForgeryToken
@@ -241,4 +240,17 @@ function Func() {
 
     $('textarea').val('')
     $('#exampleModalCenter').modal('hide');
+};
+
+function MenuFunc(e) {
+    $.ajax({
+        type: "Get",
+        url: "/Menu/MenuPartial",
+        data: { value: e }
+    }).done(function (r) {
+        $('#partial').html(r);
+
+    }).fail(function (e) {
+        console.log(e.responseText);
+    });
 };

@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace ProjectRestaurant.Data.Migrations
+﻿namespace ProjectRestaurant.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class ImageTableAdd : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +21,7 @@ namespace ProjectRestaurant.Data.Migrations
                     EventId = table.Column<int>(nullable: false),
                     Extension = table.Column<string>(nullable: true),
                     RemoteImageUrl = table.Column<string>(nullable: true),
-                    AddedByUserId = table.Column<string>(nullable: true)
+                    AddedByUserId = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -56,7 +57,7 @@ namespace ProjectRestaurant.Data.Migrations
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true),
                 },
                 constraints: table =>
                 {

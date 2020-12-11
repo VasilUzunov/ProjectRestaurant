@@ -10,9 +10,7 @@
 
     public class SmsSender : ISmsSender
     {
-        private readonly TwilioClient client;
-
-        public SmsSender(string sid,string authToken)
+        public SmsSender(string sid, string authToken)
         {
             TwilioClient.Init(sid, authToken);
         }

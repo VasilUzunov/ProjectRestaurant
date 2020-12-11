@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace ProjectRestaurant.Data.Migrations
+﻿namespace ProjectRestaurant.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddShapeOfTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -11,7 +11,7 @@ namespace ProjectRestaurant.Data.Migrations
                 table: "Tables",
                 maxLength: 10,
                 nullable: false,
-                defaultValue: "");
+                defaultValue: " ");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

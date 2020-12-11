@@ -1,17 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace ProjectRestaurant.Data.Migrations
+﻿namespace ProjectRestaurant.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class FixDataValidation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
         }
     }
 }

@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace ProjectRestaurant.Data.Migrations
+﻿namespace ProjectRestaurant.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class MenuImageAdd : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +21,7 @@ namespace ProjectRestaurant.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     MenuItemId = table.Column<int>(nullable: false),
                     Extension = table.Column<string>(nullable: true),
-                    RemoteImageUrl = table.Column<string>(nullable: true)
+                    RemoteImageUrl = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {

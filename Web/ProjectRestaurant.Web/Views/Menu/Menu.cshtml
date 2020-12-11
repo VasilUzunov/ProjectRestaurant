@@ -25,19 +25,4 @@
             <partial name="_MenuPartial"/>
         </div>
     </div>
-</section>
-<script type="text/jscript">
-   var url = '@Url.Action("MenuPartial", "Menu")';
-    function MenuFunc(e){
-        $.ajax({
-               type: "Get",
-               url: url,
-               data: {value:e},
-        }).done(function (r) {
-                $('#partial').html(r);
-
-        }).fail(function (e) {
-                console.log(e.responseText);
-        });
-    };
-</script>   
+</section>  
