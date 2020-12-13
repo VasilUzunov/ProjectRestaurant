@@ -25,7 +25,8 @@
         "dist/css/bootstrap.css",
         "dist/css/bootstrap.min.css",
         "dist/js/bootstrap.js",
-        "dist/js/bootstrap.min.js"
+        "dist/js/bootstrap.min.js",
+        "dist/js/bootstrap.bundle.min.js"
       ]
     },
     {
@@ -42,6 +43,16 @@
       "files": [
         "dist/jquery.validate.unobtrusive.js",
         "dist/jquery.validate.unobtrusive.min.js"
+      ]
+    },
+    {
+      "library": "owl.carousel@2.3.4",
+      "destination": "wwwroot/lib/owl.carousel/",
+      "files": [
+        "dist/owl.carousel.min.js",
+        "dist/owl.carousel.js",
+        "dist/LICENSE",
+        "dist/README.md"
       ]
     }
   ]
