@@ -19,10 +19,16 @@
         }
 
         [HttpPost]
-        public async Task Post(VoteInputModel input)
+        public async Task<RedirectToActionResult> Post(VoteInputModel input)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.RedirectToAction("Post");
+            }
+
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             await this.voteService.SetVoteAsync(userId, input.Star, input.Description);
+            return (RedirectToActionResult)this.TempData["You successfully vote!"];
         }
     }
 }

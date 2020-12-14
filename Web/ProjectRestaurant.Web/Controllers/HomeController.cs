@@ -10,6 +10,7 @@
     using ProjectRestaurant.Web.ViewModels;
     using ProjectRestaurant.Web.ViewModels.Event;
     using ProjectRestaurant.Web.ViewModels.NewFolder;
+    using ProjectRestaurant.Web.ViewModels.Subscribe;
     using ProjectRestaurant.Web.ViewModels.Vote;
 
     public class HomeController : BaseController
@@ -43,12 +44,22 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendToEmail(string email)
+        public async Task<IActionResult> SendToEmail(SubscribeInputModel input)
         {
-            await this.subscribeService.AddAsyncSubscriber(email);
+            if (!this.ModelState.IsValid)
+            {
+                if (input == null)
+                {
+                    this.SetFlash("You must write your email!");
+                }
+
+                return this.RedirectToAction("Index");
+            }
+
+            await this.subscribeService.AddAsyncSubscriber(input.Email);
             var html = new StringBuilder();
             html.AppendLine($"<h1>You are subscribed for our newsletter!</h1>");
-            await this.emailSender.SendEmailAsync("vasil6062@abv.bg", "Pause Restaurant", email, "Subscribe", html.ToString());
+            await this.emailSender.SendEmailAsync("vasil6062@abv.bg", "Pause Restaurant", input.Email, "Subscribe", html.ToString());
             return this.RedirectToAction(nameof(this.Index));
         }
     }

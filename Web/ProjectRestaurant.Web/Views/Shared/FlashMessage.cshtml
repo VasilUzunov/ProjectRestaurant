@@ -1,0 +1,12 @@
+﻿@{
+    string text = (string)TempData["FlashMessage.Text"];
+    string cssClass = null;
+}
+@if (!string.IsNullOrWhiteSpace(text))
+{
+    <div class="@cssClass">
+        <p>
+            @text
+        </p>
+    </div>
+}

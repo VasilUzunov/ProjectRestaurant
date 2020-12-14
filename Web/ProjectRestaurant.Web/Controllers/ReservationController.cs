@@ -39,7 +39,7 @@
                 return this.View(input);
             }
 
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
             await this.reservationsService.CreateAsyncReservation(input, userId);
 

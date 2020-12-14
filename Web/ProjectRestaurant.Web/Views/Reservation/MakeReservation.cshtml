@@ -26,10 +26,10 @@
                 <form method="post" class="email-form" data-aos="fade-up" data-aos-delay="100">
                     <div class="form-row">
                         <div class="col-lg-6 col-md-8 form-group">
-                            <input asp-for="Date" type="date" class="form-control" style="color: #a49b89" >
+                            <input asp-for="Date" type="date" class="form-control" style="color: #a49b89" required>
                         </div>
                         <div class="col-lg-3 col-md-5 form-group">
-                            <select asp-for="Hour" class="form-control" style="border-color: #625b4b; background: #0c0b09; color: #a49b89">
+                            <select asp-for="Hour" class="form-control" style="border-color: #625b4b; background: #0c0b09; color: #a49b89" required>
                                 <option disabled selected hidden>Hour</option>
                                 @for (int i = 10; i <= 22; i++)
                                 {
@@ -38,7 +38,7 @@
                             </select>
                         </div>
                         <div class="col-lg-3 col-md-5 form-group">
-                            <select asp-for="Minutes" class="form-control" style="border-color: #625b4b; background: #0c0b09; color: #a49b89">
+                            <select asp-for="Minutes" class="form-control" required style="border-color: #625b4b; background: #0c0b09; color: #a49b89">
                                 <option disabled selected hidden>Minutes</option>
                                 <option>00</option>
                                 <option>01</option>
@@ -60,10 +60,10 @@
                     </div>
                     <div class="form-row">
                         <div class="col-lg-6 col-md-8 form-group">
-                            <input asp-for="Table"  type="number" class="form-control" placeholder="Preferred table" >
+                            <input asp-for="Table"  type="number" class="form-control" placeholder="Preferred table" required >
                         </div>
                         <div class="col-lg-6 col-md-8 form-group">
-                            <input asp-for="NumberOfPeople" type="number" class="form-control" placeholder="# of people" >
+                            <input asp-for="NumberOfPeople" type="number" class="form-control" placeholder="# of people" required >
                         </div>
                     </div>
                     <div class="form-group">

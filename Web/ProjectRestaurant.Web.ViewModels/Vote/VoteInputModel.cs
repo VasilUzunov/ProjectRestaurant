@@ -5,7 +5,7 @@
     public class VoteInputModel
     {
         [Required]
-        [MinLength(5)]
+        [MinLength(10)]
         [MaxLength(1000)]
         public string Description { get; set; }
 
