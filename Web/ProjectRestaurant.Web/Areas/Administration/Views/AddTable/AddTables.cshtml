@@ -5,12 +5,12 @@
     <div class="form-group">
         <div asp-validation-summary="All" class="text-danger"></div>
 
-        <label asp-for="NumberOfSeats">Number of people</label>
+        <label asp-for="NumberOfSeats">Number of seats</label>
         <select asp-for="NumberOfSeats" class="form-control" id="exampleFormControlSelect1">
             @for (int i = 1; i <= 20; i++)
             {
-                <option>@i</option>  
-            } 
+                <option>@i</option>
+            }
 
         </select>
         <span asp-validation-for="NumberOfSeats" class="text-danger"></span>
@@ -23,6 +23,12 @@
             <option>Rectangle</option>
         </select>
         <span asp-validation-for="ShapeOfTable" class="text-danger"></span>
+        
+        <div class="form-group">
+            <label asp-for="NumberOfTable"></label>
+            <input asp-for="NumberOfTable" class="form-control">
+            <span asp-validation-for="NumberOfTable" class="text-danger"></span>
+        </div>
 
     </div>
     <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5%">Add</button>

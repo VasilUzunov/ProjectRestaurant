@@ -9,5 +9,8 @@
 
         [Required]
         public string ShapeOfTable { get; set; }
+
+        [Required]
+        public int NumberOfTable { get; set; }
     }
 }

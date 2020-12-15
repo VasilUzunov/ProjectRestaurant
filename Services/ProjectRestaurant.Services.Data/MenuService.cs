@@ -37,7 +37,7 @@
             var extension = Path.GetExtension(input.Image.FileName).TrimStart('.');
             if (!this.allowedExtensions.Any(x => extension.EndsWith(x)))
             {
-                throw new Exception($"Invalid image extension {extension}");
+                throw new ArgumentException($"Invalid image extension {extension}");
             }
 
             var dbImage = new MenuImage()

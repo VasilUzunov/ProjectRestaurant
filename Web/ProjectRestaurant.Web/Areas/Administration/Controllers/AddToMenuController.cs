@@ -31,7 +31,7 @@
                 return this.View(input);
             }
 
-            await this.menuService.CreateAsyncMenuItem(input, $"{this.environment.WebRootPath}/images");
+            var ex = this.menuService.CreateAsyncMenuItem(input, $"{this.environment.WebRootPath}/images");
             return this.Redirect("/Administration/AddToMenu/AddToMenu");
         }
     }

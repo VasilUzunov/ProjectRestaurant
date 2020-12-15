@@ -22,6 +22,7 @@
             {
                 NumberOfSeats = input.NumberOfSeats,
                 ShapeOfTable = input.ShapeOfTable,
+                TableNumber = input.NumberOfTable,
             };
 
             await this.tableRepository.AddAsync(table);
