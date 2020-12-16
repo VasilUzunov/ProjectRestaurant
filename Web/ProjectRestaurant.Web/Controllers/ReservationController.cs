@@ -53,7 +53,7 @@
                 .AppendLine($"For: {input.Date} at {input.Hour}:{input.Minutes}")
                 .AppendLine($"Your table is №{input.Table} for {input.NumberOfPeople} people");
 
-            var sms = this.smsSender.SendEmailAsync(trimmedPhone, message.ToString().TrimEnd());
+            var sms = this.smsSender.SendSmsAsync(trimmedPhone, message.ToString().TrimEnd());
 
             return this.View();
         }

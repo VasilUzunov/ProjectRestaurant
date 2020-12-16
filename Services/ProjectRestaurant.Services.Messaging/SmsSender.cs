@@ -10,16 +10,19 @@
 
     public class SmsSender : ISmsSender
     {
-        public SmsSender(string sid, string authToken)
+        private readonly string phone;
+
+        public SmsSender(string sid, string authToken, string phone)
         {
+            this.phone = phone;
             TwilioClient.Init(sid, authToken);
         }
 
-        public Task SendEmailAsync(string toPhone, string message)
+        public Task SendSmsAsync(string toPhone, string message)
         {
-            if (string.IsNullOrWhiteSpace(message) && string.IsNullOrWhiteSpace(toPhone))
+            if (string.IsNullOrWhiteSpace(message) || string.IsNullOrWhiteSpace(toPhone))
             {
-                throw new ArgumentException("Subject and message should be provided.");
+                throw new ArgumentException("Phone and message should be provided.");
             }
 
             try
@@ -27,7 +30,7 @@
                 // Send an SMS message.
                 var sms = MessageResource.CreateAsync(
                     to: new PhoneNumber(toPhone),
-                    from: new PhoneNumber("+17658964505"),
+                    from: new PhoneNumber(this.phone),
                     body: message);
             }
             catch (TwilioException ex)

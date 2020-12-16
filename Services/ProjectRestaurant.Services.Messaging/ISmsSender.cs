@@ -4,7 +4,7 @@
 
     public interface ISmsSender
     {
-        Task SendEmailAsync(
+        Task SendSmsAsync(
             string to,
             string message);
     }

@@ -30,6 +30,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\ProjectRestaurant.Data\ProjectRestaurant.Data.csproj" />
     <ProjectReference Include="..\..\Services\ProjectRestaurant.Services.Data\ProjectRestaurant.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Services\ProjectRestaurant.Services.Messaging\ProjectRestaurant.Services.Messaging.csproj" />
   </ItemGroup>
 
 </Project>
