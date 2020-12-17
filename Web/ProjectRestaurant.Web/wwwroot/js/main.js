@@ -254,3 +254,16 @@ function MenuFunc(e) {
         console.log(e.responseText);
     });
 };
+
+function ShowAll() {
+    $.ajax({
+        type: "Get",
+        url: "/Reservation/ShowAll"
+    }).done(function (r) {
+        $('#body').hide;
+        $('#partial').html(r);
+
+    }).fail(function (e) {
+        console.log(e.responseText);
+    });
+};

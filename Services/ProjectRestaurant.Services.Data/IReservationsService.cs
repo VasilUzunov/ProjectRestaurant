@@ -13,6 +13,8 @@
 
         IEnumerable<T> GetAll<T>();
 
+        IEnumerable<T> GetAll<T>(string userId);
+
         string GetPhoneNumber(string userId);
     }
 }

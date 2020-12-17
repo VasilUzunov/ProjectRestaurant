@@ -1,0 +1,32 @@
+﻿@using ProjectRestaurant.Web
+@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout))
+    {
+        Layout = (string)parentLayout;
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
+}
+<section class="flex-fill d-flex align-items-left" style="height: 30%">
+</section>
+<div class="container" data-aos="fade-up" style="height: 50%">
+    <div class="row">
+        <div class="col-sm-3 align-items-left">
+            <h2>Manage your account</h2>
+            <div>
+                <partial name="_ManageNav"/>
+            </div>
+        </div>
+        <div class="align-items-center col-md-7">
+            <div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

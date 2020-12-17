@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using ProjectRestaurant.Data.Models
+@inject SignInManager<ApplicationUser> SignInManager
 <head>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -51,8 +53,12 @@
                     <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Menu" asp-action="Menu">Menu</a></li>
                     <li><a asp-area="" asp-controller="Contact" asp-action="Contact">Contact</a></li>
+                    @if (this.SignInManager.IsSignedIn(this.User))
+                    {
+                        <li><a asp-area="" asp-controller="Reservation" asp-action="ShowAll">Your Reservations</a></li>
+                    }
                     <partial name="_LoginPartial" />
-                    <li class="book-a-table text-center"><a asp-area="" asp-controller="Reservation" asp-action="MakeReservation">Book a table</a></li>
+                    <li class="book-a-table text-center"><a asp-area="" asp-controller="Reservation" asp-action="Reservation">Book a table</a></li>
                 </ul>
             </nav>
 
@@ -111,8 +117,8 @@
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>Our Newsletter</h4>
                         <p>Want the latest and greatest news from our restaurant straight to your inbox? Chuck us your detail and get sweet weekly email.</p>
-                        <form method="post" asp-route-input="Email" asp-controller="Home" asp-action="SendToEmail"  autocomplete="off">
-                            <input type="email" name="email" required ><input type="submit" value="Subscribe" )>
+                        <form method="post" asp-route-input="Email" asp-controller="Home" asp-action="SendToEmail" autocomplete="off">
+                            <input type="email" name="email" required><input type="submit" value="Subscribe" )>
                         </form>
 
                     </div>
@@ -148,17 +154,17 @@
                                 <span class="selected-rating">0</span><small> / 5</small>
                             </h2>
                             <button type="button" class="btnrating btn btn-default btn-lg" data-attr="1" id="rating-star-1" style="color: white; border-color: #625b4b">
-                                <i class="fa fa-star" aria-hidden="true"></i>              
-                            </button>                                                      
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </button>
                             <button type="button" class="btnrating btn btn-default btn-lg" data-attr="2" id="rating-star-2" style="color: white; border-color: #625b4b">
-                                <i class="fa fa-star" aria-hidden="true"></i>              
-                            </button>                                                      
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </button>
                             <button type="button" class="btnrating btn btn-default btn-lg" data-attr="3" id="rating-star-3" style="color: white; border-color: #625b4b">
-                                <i class="fa fa-star" aria-hidden="true"></i>              
-                            </button>                                                      
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </button>
                             <button type="button" class="btnrating btn btn-default btn-lg" data-attr="4" id="rating-star-4" style="color: white; border-color: #625b4b">
-                                <i class="fa fa-star" aria-hidden="true"></i>              
-                            </button>                                                      
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </button>
                             <button type="button" class="btnrating btn btn-default btn-lg" data-attr="5" id="rating-star-5" style="color: white; border-color: #625b4b">
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             </button>

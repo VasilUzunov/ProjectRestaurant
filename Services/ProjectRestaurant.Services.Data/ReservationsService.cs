@@ -7,6 +7,7 @@
 
     using ProjectRestaurant.Data.Common.Repositories;
     using ProjectRestaurant.Data.Models;
+    using ProjectRestaurant.Services.Mapping;
     using ProjectRestaurant.Web.ViewModels.Reservation;
 
     public class ReservationsService : IReservationsService
@@ -34,6 +35,7 @@
                 UserId = userId,
                 DateAndTimeOfReservation = dateAndTime,
                 TableId = table.Id,
+                NumberOfPeople = input.NumberOfPeople,
             };
 
             await this.reservationRepository.AddAsync(reservation);
@@ -42,7 +44,14 @@
 
         public IEnumerable<T> GetAll<T>()
         {
-            throw new System.NotImplementedException();
+            var reservation = this.reservationRepository.AllAsNoTracking().OrderByDescending(x => x.DateAndTimeOfReservation).To<T>().ToList();
+            return reservation;
+        }
+
+        public IEnumerable<T> GetAll<T>(string userId)
+        {
+            var reservation = this.reservationRepository.AllAsNoTracking().Where(x => x.UserId == userId).OrderByDescending(x => x.DateAndTimeOfReservation).To<T>().ToList();
+            return reservation;
         }
 
         public string GetPhoneNumber(string userId)

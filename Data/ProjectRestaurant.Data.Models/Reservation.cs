@@ -15,6 +15,9 @@
         [MaxLength(200)]
         public string Message { get; set; }
 
+        [Required]
+        public int NumberOfPeople { get; set; }
+
         public DateTime DateAndTimeOfReservation { get; set; }
 
         public string UserId { get; set; }

@@ -1,11 +1,11 @@
-﻿using System;
-
-namespace ProjectRestaurant.Services.Data.Tests
+﻿namespace ProjectRestaurant.Services.Data.Tests
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
     using System.Threading.Tasks;
+
     using Moq;
     using ProjectRestaurant.Data.Common.Repositories;
     using ProjectRestaurant.Data.Models;
@@ -84,67 +84,150 @@ namespace ProjectRestaurant.Services.Data.Tests
             Assert.Equal(1, totalObjectsAfterAdding);
         }
 
-        //[Fact]
-        //public void GetAllShouldWorkAsIsExpected()
-        //{
-        //    var mockReservationRepository = new Mock<IDeletableEntityRepository<Reservation>>();
-        //    var mockTableRepository = new Mock<IDeletableEntityRepository<Table>>();
-        //    var mockUserRepository = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+        [Fact]
+        public void GetAllShouldWorkAsIsExpected()
+        {
+            var mockReservationRepository = new Mock<IDeletableEntityRepository<Reservation>>();
+            var mockTableRepository = new Mock<IDeletableEntityRepository<Table>>();
+            var mockUserRepository = new Mock<IDeletableEntityRepository<ApplicationUser>>();
 
-        //    mockTableRepository.Setup(x => x.AllAsNoTracking())
-        //        .Returns(new List<Table>()
-        //        {
-        //            new Table()
-        //            {
-        //                NumberOfSeats = 3,
-        //                ShapeOfTable = "oval",
-        //                TableNumber = 3,
-        //            },
-        //        }.AsQueryable());
+            mockTableRepository.Setup(x => x.AllAsNoTracking())
+                .Returns(new List<Table>()
+                {
+                    new Table()
+                    {
+                        NumberOfSeats = 3,
+                        ShapeOfTable = "oval",
+                        TableNumber = 3,
+                    },
+                }.AsQueryable());
 
-        //    mockUserRepository.Setup(x => x.AllAsNoTracking())
-        //        .Returns(new List<ApplicationUser>()
-        //        {
-        //            new ApplicationUser()
-        //            {
-        //                Address = "nsakjsalkjalkjAJASlkajSLKASjaslKJSAklas",
-        //                Email = "vasil@abv.bg",
-        //                FirstName = "Vasil",
-        //                PhoneNumber = "0877980616",
-        //                LastName = "Uzunov",
-        //                PasswordHash = "AQAAAAEAACcQAAAAELHKxwpRjNH7bxS7xiHAhy95SNG/7le/06QkI0TM8kmjFGUlueU+iS+TnCaogfjRzw==",
-        //            },
-        //        }.AsQueryable());
+            mockUserRepository.Setup(x => x.AllAsNoTracking())
+                .Returns(new List<ApplicationUser>()
+                {
+                    new ApplicationUser()
+                    {
+                        Address = "nsakjsalkjalkjAJASlkajSLKASjaslKJSAklas",
+                        Email = "vasil@abv.bg",
+                        FirstName = "Vasil",
+                        PhoneNumber = "0877980616",
+                        LastName = "Uzunov",
+                        PasswordHash = "AQAAAAEAACcQAAAAELHKxwpRjNH7bxS7xiHAhy95SNG/7le/06QkI0TM8kmjFGUlueU+iS+TnCaogfjRzw==",
+                    },
+                }.AsQueryable());
 
-        //    mockReservationRepository.Setup(x => x.AllAsNoTracking())
-        //        .Returns(new List<Reservation>()
-        //        {
-        //            new Reservation()
-        //            {
-        //                UserId = mockUserRepository.Object.AllAsNoTrackingWithDeleted().First().Id,
-        //                Message = "kjsakjhdsjkhsakjsahsadkjhsakhjsadk",
-        //                TableId = mockTableRepository.Object.AllAsNoTrackingWithDeleted().First().Id,
-        //                DateAndTimeOfReservation = DateTime.Now,
-        //            },
-        //        }.AsQueryable());
+            mockReservationRepository.Setup(x => x.AllAsNoTracking())
+                .Returns(new List<Reservation>()
+                {
+                    new Reservation()
+                    {
+                        User = mockUserRepository.Object.AllAsNoTracking().First(),
+                        Message = "kjsakjhdsjkhsakjsahsadkjhsakhjsadk",
+                        Table = mockTableRepository.Object.AllAsNoTracking().First(),
+                        DateAndTimeOfReservation = DateTime.Parse("12/12/2020 18:18:00 PM"),
+                        NumberOfPeople = 3,
+                    },
+                }.AsQueryable());
 
-        //    var reservationService = new ReservationsService (mockReservationRepository.Object, mockTableRepository.Object, mockUserRepository.Object);
+            var reservationService = new ReservationsService(mockReservationRepository.Object, mockTableRepository.Object, mockUserRepository.Object);
 
-        //    var allItems = reservationService.GetAll<ReservationViewModel>();
+            var allItems = reservationService.GetAll<ReservationViewModel>();
 
-        //    Assert.Equal(2, allItems.Count());
+            Assert.Single(allItems);
 
-        //    foreach (var item in allItems)
-        //    {
-        //        Assert.Equal("oneoneoneone oneoneoneone oneoneoneone oneoneoneone", item.Description);
-        //        Assert.Equal("/images/menu/klsajldksadklsadsdlkjsadklj.png", item.ImageUrl);
-        //        Assert.Equal("Beer", item.Name);
-        //        Assert.Equal(500, item.PortionWeight);
-        //        Assert.Equal(12.50, item.Price);
-        //        Assert.Equal("Drinks", item.CategoryName);
-        //        break;
-        //    }
-        //}
+            foreach (var item in allItems)
+            {
+                Assert.Equal("kjsakjhdsjkhsakjsahsadkjhsakhjsadk", item.Message);
+                Assert.Equal(3, item.NumberOfPeople);
+                Assert.Equal("Saturday, December 12, 2020 6:18:00 PM", item.DateAndTimeOfReservationInString);
+                Assert.Equal("Vasil Uzunov", item.UserFullName);
+                Assert.Equal(3, item.TableTableNumber);
+                break;
+            }
+        }
+
+        [Fact]
+        public void GetAllWithUserIdShouldWorkAsIsExpected()
+        {
+            var mockReservationRepository = new Mock<IDeletableEntityRepository<Reservation>>();
+            var mockTableRepository = new Mock<IDeletableEntityRepository<Table>>();
+            var mockUserRepository = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+
+            mockTableRepository.Setup(x => x.AllAsNoTracking())
+                .Returns(new List<Table>()
+                {
+                    new Table()
+                    {
+                        NumberOfSeats = 3,
+                        ShapeOfTable = "oval",
+                        TableNumber = 3,
+                    },
+                }.AsQueryable());
+
+            mockUserRepository.Setup(x => x.AllAsNoTracking())
+                .Returns(new List<ApplicationUser>()
+                {
+                    new ApplicationUser()
+                    {
+                        Id = "68a7b421-feca-40b2-bece-ecaf81f6ebb8",
+                        Address = "nsakjsalkjalkjAJASlkajSLKASjaslKJSAklas",
+                        Email = "vasil@abv.bg",
+                        FirstName = "Marko",
+                        PhoneNumber = "0877980616",
+                        LastName = "Marko",
+                        PasswordHash = "AQAAAAEAACcQAAAAELHKxwpRjNH7bxS7xiHAhy95SNG/7le/06QkI0TM8kmjFGUlueU+iS+TnCaogfjRzw==",
+                    },
+                    new ApplicationUser()
+                    {
+                        Id = "68a7b421-feca-40b2-bece-ecaf81f6ebb9",
+                        Address = "nsakjsalkjalkjAJASlkajSLKASjaslKJSAklas",
+                        Email = "vasil@abv.bg",
+                        FirstName = "Vasil",
+                        PhoneNumber = "0877980616",
+                        LastName = "Uzunov",
+                        PasswordHash = "AQAAAAEAACcQAAAAELHKxwpRjNH7bxS7xiHAhy95SNG/7le/06QkI0TM8kmjFGUlueU+iS+TnCaogfjRzw==",
+                    },
+                }.AsQueryable());
+
+            mockReservationRepository.Setup(x => x.AllAsNoTracking())
+                .Returns(new List<Reservation>()
+                {
+                    new Reservation()
+                    {
+                        User = mockUserRepository.Object.AllAsNoTracking().First(),
+                        Message = "kjsakjhdsjkhsakjsahsadkjhsakhjsadk",
+                        Table = mockTableRepository.Object.AllAsNoTracking().First(),
+                        DateAndTimeOfReservation = DateTime.Parse("12/12/2020 18:18:00 PM"),
+                        NumberOfPeople = 3,
+                    },
+                    new Reservation()
+                    {
+                        User = mockUserRepository.Object.AllAsNoTracking().First(x => x.FirstName == "Marko"),
+                        Message = "kjsakjhdsjkhsakjsahsadkjhsakhjsadk123456",
+                        Table = mockTableRepository.Object.AllAsNoTracking().First(),
+                        DateAndTimeOfReservation = DateTime.Parse("12/12/2020 18:18:00 PM"),
+                        NumberOfPeople = 4,
+                    },
+                }.AsQueryable());
+
+            var reservationService = new ReservationsService(mockReservationRepository.Object, mockTableRepository.Object, mockUserRepository.Object);
+
+            string userId = mockUserRepository.Object.AllAsNoTracking().First(x => x.FirstName == "Vasil").Id;
+
+            var allItems = reservationService.GetAll<ReservationViewModel>(userId);
+
+            //Assert.Single(allItems);
+
+            //foreach (var item in allItems)
+            //{
+            //    Assert.Equal("kjsakjhdsjkhsakjsahsadkjhsakhjsadk123456", item.Message);
+            //    Assert.Equal(4, item.NumberOfPeople);
+            //    Assert.Equal("Saturday, December 12, 2020 6:18:00 PM", item.DateAndTimeOfReservationInString);
+            //    Assert.Equal("Vasil Uzunov", item.UserFullName);
+            //    Assert.Equal(3, item.TableTableNumber);
+            //    break;
+            //}
+        }
 
         [Fact]
         public void GetPhoneNumberShouldWorkAsIsExpected()

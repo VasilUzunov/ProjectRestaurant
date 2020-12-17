@@ -1,24 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Moq;
-using ProjectRestaurant.Data.Common.Repositories;
-using ProjectRestaurant.Data.Models;
-using ProjectRestaurant.Data.Repositories;
-using ProjectRestaurant.Services.Data.Tests.Common;
-using ProjectRestaurant.Services.Mapping;
-using ProjectRestaurant.Web.ViewModels;
-using ProjectRestaurant.Web.ViewModels.Administration;
-using ProjectRestaurant.Web.ViewModels.Event;
-using Xunit;
-
-namespace ProjectRestaurant.Services.Data.Tests
+﻿namespace ProjectRestaurant.Services.Data.Tests
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Http;
+    using Moq;
+    using ProjectRestaurant.Data.Common.Repositories;
+    using ProjectRestaurant.Data.Models;
+    using ProjectRestaurant.Data.Repositories;
+    using ProjectRestaurant.Services.Data.Tests.Common;
+    using ProjectRestaurant.Services.Mapping;
+    using ProjectRestaurant.Web.ViewModels;
+    using ProjectRestaurant.Web.ViewModels.Administration;
+    using ProjectRestaurant.Web.ViewModels.Event;
+    using Xunit;
+
     public class EventServiceTests
     {
         private readonly IDeletableEntityRepository<Event> eventRepository;
@@ -82,7 +81,7 @@ namespace ProjectRestaurant.Services.Data.Tests
         }
 
         [Fact]
-        public async Task CreateEventAsyncShouldCheckCategory()
+        public void CreateEventAsyncShouldCheckCategory()
         {
             const string name = "Birthday";
             const string description = "oneoneoneone oneoneoneone oneoneoneone oneoneoneone";

@@ -13,6 +13,7 @@
     using ProjectRestaurant.Services.Data;
     using ProjectRestaurant.Services.Messaging;
     using ProjectRestaurant.Web.ViewModels.Reservation;
+    using ProjectRestaurant.Web.Areas.Identity.Pages.Account.Manage;
 
     public class ReservationController : BaseController
     {
@@ -26,13 +27,21 @@
         }
 
         [Authorize]
-        public IActionResult MakeReservation()
+        public IActionResult Reservation()
         {
             return this.View();
         }
 
+        [Authorize]
+        public IActionResult ShowAll()
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var all = this.reservationsService.GetAll<ReservationViewModel>(userId);
+            return this.View(all);
+        }
+
         [HttpPost]
-        public async Task<IActionResult> MakeReservation(ReservationInputModel input)
+        public async Task<IActionResult> Reservation(ReservationInputModel input)
         {
             if (!this.ModelState.IsValid)
             {
