@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using ProjectRestaurant.Data.Models
 @inject SignInManager<ApplicationUser> SignInManager
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
 <head>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -29,172 +30,181 @@
 
 </head>
 <body>
-    <div id="topbar" class="d-flex align-items-center fixed-top ">
-        <div class="container d-flex flex-wrap">
-            <div class="contact-info mr-auto">
-                <i class="icofont-phone"></i> +359 87 798 0616
-                <span class="d-none d-lg-inline-block"><i class="icofont-clock-time icofont-rotate-180"></i> Mon-Sun: 8:00 AM - 23:00 PM</span>
-            </div>
-            <div class="languages">
-                <ul>
-                    <li>En</li>
-                </ul>
-            </div>
+<div id="topbar" class="d-flex align-items-center fixed-top ">
+    <div class="container d-flex flex-wrap">
+        <div class="contact-info mr-auto">
+            <i class="icofont-phone"></i> +359 87 798 0616
+            <span class="d-none d-lg-inline-block"><i class="icofont-clock-time icofont-rotate-180"></i> Mon-Sun: 8:00 AM - 23:00 PM</span>
+        </div>
+        <div class="languages">
+            <ul>
+                <li>En</li>
+            </ul>
         </div>
     </div>
+</div>
 
-    <header id="header" class="fixed-top">
-        <div class="container d-flex align-items-center">
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
 
-            <h1 class="logo mr-auto"><a asp-area="" asp-controller="Home" asp-action="Index">Pause</a></h1>
+        <h1 class="logo mr-auto"><a asp-area="" asp-controller="Home" asp-action="Index">Pause</a></h1>
 
-            <nav class="nav-menu d-none d-lg-block">
-                <ul>
-                    <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Menu" asp-action="Menu">Menu</a></li>
-                    <li><a asp-area="" asp-controller="Contact" asp-action="Contact">Contact</a></li>
-                    @if (this.SignInManager.IsSignedIn(this.User))
-                    {
-                        <li><a asp-area="" asp-controller="Reservation" asp-action="ShowAll">Your Reservations</a></li>
-                    }
-                    <partial name="_LoginPartial" />
-                    <li class="book-a-table text-center"><a asp-area="" asp-controller="Reservation" asp-action="Reservation">Book a table</a></li>
-                </ul>
-            </nav>
+        <nav class="nav-menu d-none d-lg-block">
+            <ul>
+                <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="Menu" asp-action="Menu">Menu</a></li>
+                <li><a asp-area="" asp-controller="Contact" asp-action="Contact">Contact</a></li>
+                @if (this.SignInManager.IsSignedIn(this.User))
+                {
+                    <li><a asp-area="" asp-controller="Reservation" asp-action="ShowAll">Your Reservations</a></li>
+                }
+                <partial name="_LoginPartial" />
+                <li class="book-a-table text-center"><a asp-area="" asp-controller="Reservation" asp-action="Reservation">Book a table</a></li>
+            </ul>
+        </nav>
 
-        </div>
-        <div class="fixed-bottom">
-            <partial name="_CookieConsentPartial" />
-        </div>
-    </header>
-
-    <div>
-
-        <main role="main">
-            @this.RenderBody()
-        </main>
     </div>
+    <div class="fixed-bottom">
+        <partial name="_CookieConsentPartial" />
+    </div>
+</header>
 
-    <footer id="footer">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row ">
+<div>
 
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-info">
-                            <h3>Pause</h3>
-                            <p>
-                                15 Bul. Bulgaria Street <br>
-                                Smolyan 4700, Bulgaria<br><br>
-                                <strong>Phone:</strong> +359 87 798 0616<br>
-                                <strong>Email:</strong> vasil6062@gmail.com<br>
-                            </p>
-                            <div class="social-links mt-3">
-                                <a href="https://twitter.com/" class="twitter"><i class="bx bxl-twitter" style="color: #cda45e"></i></a>
-                                <a href="https://www.facebook.com/" class="facebook"><i class="bx bxl-facebook" style="color: #cda45e"></i></a>
-                                <a href="https://www.instagram.com/" class="instagram"><i class="bx bxl-instagram" style="color: #cda45e"></i></a>
-                                <a href="https://www.skype.com/bg/" class="google-plus"><i class="bx bxl-skype" style="color: #cda45e"></i></a>
-                                <a href="https://www.linkedin.com/" class="linkedin"><i class="bx bxl-linkedin" style="color: #cda45e"></i></a>
-                            </div>
-                        </div>
-                    </div>
+    <main role="main">
+        @this.RenderBody()
+    </main>
+</div>
 
-                    <div class="col-lg-2 col-md-6 footer-links">
-                        <h4>Useful Links</h4>
-                        <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Index">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Index">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Index">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Index">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Index">Privacy policy</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-2 col-md-6">
-
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 footer-newsletter">
-                        <h4>Our Newsletter</h4>
-                        <p>Want the latest and greatest news from our restaurant straight to your inbox? Chuck us your detail and get sweet weekly email.</p>
-                        <form method="post" asp-route-input="Email" asp-controller="Home" asp-action="SendToEmail" autocomplete="off">
-                            <input type="email" name="email" required><input type="submit" value="Subscribe" )>
-                        </form>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
+<footer id="footer">
+    <div class="footer-top">
         <div class="container">
-            <div class="copyright">
-                &copy; Copyright <strong><span>Pause</span></strong>. All Rights Reserved
+            <div class="row ">
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-info">
+                        <h3>Pause</h3>
+                        <p>
+                            15 Bul. Bulgaria Street <br>
+                            Smolyan 4700, Bulgaria<br><br>
+                            <strong>Phone:</strong> +359 87 798 0616<br>
+                            <strong>Email:</strong> vasil6062@gmail.com<br>
+                        </p>
+                        <div class="social-links mt-3">
+                            <a href="https://twitter.com/" class="twitter"><i class="bx bxl-twitter" style="color: #cda45e"></i></a>
+                            <a href="https://www.facebook.com/" class="facebook"><i class="bx bxl-facebook" style="color: #cda45e"></i></a>
+                            <a href="https://www.instagram.com/" class="instagram"><i class="bx bxl-instagram" style="color: #cda45e"></i></a>
+                            <a href="https://www.skype.com/bg/" class="google-plus"><i class="bx bxl-skype" style="color: #cda45e"></i></a>
+                            <a href="https://www.linkedin.com/" class="linkedin"><i class="bx bxl-linkedin" style="color: #cda45e"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Privacy">Privacy policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-newsletter">
+                    <h4>Our Newsletter</h4>
+                    <p>Want the latest and greatest news from our restaurant straight to your inbox? Chuck us your detail and get sweet weekly email.</p>
+                    <form method="post" asp-controller="Home" asp-action="SendToEmail" autocomplete="off">
+                        <input type="email" name="email" required><input type="submit" value="Subscribe">
+                        <input type="hidden" id="RecaptchaValue" name="RecaptchaValue" />
+                        <button hidden type="submit"></button>
+                    </form>
+                </div>
+
             </div>
         </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Pause</span></strong>. All Rights Reserved
+        </div>
+    </div>
 
-        @if (Context.User.Identity.IsAuthenticated)
-        {
-            <div id="vote"></div>
-            <a data-toggle="modal" data-target="#exampleModalCenter" class="vote"><i class="bx bxs-star-half"></i></a>
-        }
+    @if (this.SignInManager.IsSignedIn(this.User))
+    {
+        <div id="vote"></div>
+        <a data-toggle="modal" data-target="#exampleModalCenter" class="vote"><i class="bx bxs-star-half"></i></a>
+    }
 
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content" style="background-color: #0c0b09; color: #a49b89; border-color:#625b4b">
-                    <div class="modal-body">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Rate our restaurant.</h5>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background-color: #0c0b09; color: #a49b89; border-color:#625b4b">
+                <div class="modal-body">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Rate our restaurant.</h5>
 
-                        <div class="form-group" id="rating-ability-wrapper">
-                            <label class="control-label" for="rating">
-                                <span class="field-label-header">How would you rate our service?</span><br>
-                                <span class="field-label-info"></span>
-                                <input type="hidden" id="selected_rating" name="selected_rating" value="" required="required">
-                            </label>
-                            <h2 class="bold rating-header">
-                                <span class="selected-rating">0</span><small> / 5</small>
-                            </h2>
-                            <button type="button" class="btnrating btn btn-default btn-lg" data-attr="1" id="rating-star-1" style="color: white; border-color: #625b4b">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btnrating btn btn-default btn-lg" data-attr="2" id="rating-star-2" style="color: white; border-color: #625b4b">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btnrating btn btn-default btn-lg" data-attr="3" id="rating-star-3" style="color: white; border-color: #625b4b">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btnrating btn btn-default btn-lg" data-attr="4" id="rating-star-4" style="color: white; border-color: #625b4b">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btnrating btn btn-default btn-lg" data-attr="5" id="rating-star-5" style="color: white; border-color: #625b4b">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                        <div class="form-group">
-                            <textarea required maxlength="1000" class="form-control" name="message" rows="4" placeholder="Write review" style="border-color: #625b4b; background: #0c0b09; color: white"></textarea>
-                        </div>
-                        <div style="margin: 40px 0">
-                            <button type="button" class="vote-button-close" data-dismiss="modal">Close</button>
-                            <button type="submit" onclick="Func()" class="vote-button-rate">Rate</button>
-                        </div>
+                    <div class="form-group" id="rating-ability-wrapper">
+                        <label class="control-label" for="rating">
+                            <span class="field-label-header">How would you rate our service?</span><br>
+                            <span class="field-label-info"></span>
+                            <input type="hidden" id="selected_rating" name="selected_rating" value="" required="required">
+                        </label>
+                        <h2 class="bold rating-header">
+                            <span class="selected-rating">0</span><small> / 5</small>
+                        </h2>
+                        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="1" id="rating-star-1" style="color: white; border-color: #625b4b">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="2" id="rating-star-2" style="color: white; border-color: #625b4b">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="3" id="rating-star-3" style="color: white; border-color: #625b4b">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="4" id="rating-star-4" style="color: white; border-color: #625b4b">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="5" id="rating-star-5" style="color: white; border-color: #625b4b">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <textarea required maxlength="1000" class="form-control" name="message" rows="4" placeholder="Write review" style="border-color: #625b4b; background: #0c0b09; color: white"></textarea>
+                    </div>
+                    <div style="margin: 40px 0">
+                        <button type="button" class="vote-button-close" data-dismiss="modal">Close</button>
+                        <button type="submit" onclick="Func()" class="vote-button-rate">Rate</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="preloader"></div>
-        <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
-    </footer>
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
+</footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery.easing/jquery.easing.min.js" asp-append-version="true"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
-    <script src="~/lib/owl.carousel/dist/owl.carousel.min.js" asp-append-version="true"></script>
-    <script src="~/isotope-layout/isotope.pkgd.min.js" asp-append-version="true"></script>
-    <script src="~/aos/aos.js" asp-append-version="true"></script>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/lib/jquery.easing/jquery.easing.min.js" asp-append-version="true"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+<script src="~/lib/owl.carousel/dist/owl.carousel.min.js" asp-append-version="true"></script>
+<script src="~/isotope-layout/isotope.pkgd.min.js" asp-append-version="true"></script>
+<script src="~/aos/aos.js" asp-append-version="true"></script>
+@*<script src="https://www.google.com/recaptcha/api.js?render=@this.Configuration["GoogleReCaptcha:PublicKey"]"></script>*@
 
-    <script src="~/js/main.js" asp-append-version="true"></script>
+<script src="~/js/main.js" asp-append-version="true"></script>
 
-    @await this.RenderSectionAsync("Scripts", required: false)
+@await this.RenderSectionAsync("Scripts", required: false)
 
 </body>
-<form method="post" id="antiForgeryForm"></form>
+<form hidden method="post" id="antiForgeryForm"></form>
+
+@*ReCaptcha----*@
+
+@*<script>
+    grecaptcha.ready(function () {
+        grecaptcha.execute('@this.Configuration["GoogleReCaptcha:PublicKey"]', { action: 'contact_form' }).then(function (token) {
+            document.getElementById("RecaptchaValue").value = token;
+        });
+    });
+</script>*@

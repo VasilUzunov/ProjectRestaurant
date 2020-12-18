@@ -2,6 +2,8 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using ProjectRestaurant.Web.Infrastructure;
+
     public class ContactFormInputModel
     {
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your name")]
@@ -18,5 +20,8 @@
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter message of email")]
         [StringLength(10000, ErrorMessage = "Message must be at least {2} and not more than {1} symbols.", MinimumLength = 10)]
         public string Message { get; set; }
+
+        [GoogleReCaptchaValidation]
+        public string RecaptchaValue { get; set; }
     }
 }

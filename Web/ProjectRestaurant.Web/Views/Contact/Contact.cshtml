@@ -1,14 +1,15 @@
 ﻿@model ProjectRestaurant.Web.ViewModels.Contact.ContactFormInputModel
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
 
 @{
-    this.ViewData["Title"] = "Contact";
+    this.ViewData["Title"] = "Contact Us!";
 }
 
 <section id="hero2" class="flex-fill d-flex align-items-center ">
     <div class="container position-relative text-center text-lg-left " data-aos="zoom-in" data-aos-delay="100">
         <div class="row">
             <div class="col-lg-8">
-                <h1>Contact Us!</h1>
+                <h1>@this.ViewData["Title"]</h1>
             </div>
         </div>
     </div>
@@ -58,27 +59,32 @@
 
             <div class="col-lg-8 mt-5 mt-lg-0">
 
-                <form method="post" class="email-form" enctype="multipart/form-data">
+                <form id='demo-form' class="email-form" enctype="multipart/form-data">
                     <div class="form-row form-group">
                         <div class="col-md-6 form-group">
-                            <input asp-for="Name" class="form-control" id="name" placeholder="Your Name" required/>
+                            <input asp-for="Name" class="form-control" id="name" placeholder="Your Name" required />
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
                         <div class="col-md-6 form-group">
-                            <input asp-for="Email" class="form-control" id="email" placeholder="Your Email" type="email" required/>
+                            <input asp-for="Email" class="form-control" id="email" placeholder="Your Email" type="email" required />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input asp-for="Subject" class="form-control" id="subject" placeholder="Subject" required/>
+                        <input asp-for="Subject" class="form-control" id="subject" placeholder="Subject" required />
                         <span asp-validation-for="Subject" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <textarea asp-for="Message" class="form-control" rows="8" placeholder="Your Message" required ></textarea>
+                        <textarea asp-for="Message" class="form-control" rows="8" placeholder="Your Message" required></textarea>
                         <span asp-validation-for="Message" class="text-danger"></span>
                     </div>
                     <div class="text-center">
-                        <button type="submit">Send Message</button>
+                        <input type="hidden" id="RecaptchaValue" name="RecaptchaValue" />
+                        <p>
+                            By clicking the "Register" button, you confirm that you are familiar with and agree with our
+                            <a asp-area="" asp-controller="Home" asp-action="Privacy">privacy policy.</a>
+                        </p>
+                        <button @*class="g-recaptcha" data-sitekey=@this.Configuration["GoogleReCaptcha:PublicKey"] data-callback='onSubmit'*@ type="submit">Send Message</button>
                     </div>
                 </form>
 
@@ -87,4 +93,20 @@
         </div>
 
     </div>
-</section> 
+</section>
+
+@*ReCaptcha-----*@
+
+@*<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?render=@this.Configuration["GoogleReCaptcha:PublicKey"]"></script>
+<script>
+    function onSubmit(token) {
+        document.getElementById("demo-form").submit();
+    }
+
+    grecaptcha.ready(function () {
+        grecaptcha.execute('@this.Configuration["GoogleReCaptcha:PublicKey"]', { action: 'contact_form' }).then(function (token) {
+            document.getElementById("RecaptchaValue").value = token;
+        });
+    });
+</script>*@

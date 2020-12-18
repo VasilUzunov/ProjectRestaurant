@@ -36,6 +36,11 @@
             return this.View(homeView);
         }
 
+        public IActionResult Privacy()
+        {
+            return this.View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -53,7 +58,7 @@
                     this.SetFlash("You must write your email!");
                 }
 
-                return this.RedirectToAction("Index");
+                return this.RedirectToAction(nameof(this.Index));
             }
 
             await this.subscribeService.AddAsyncSubscriber(input.Email);
