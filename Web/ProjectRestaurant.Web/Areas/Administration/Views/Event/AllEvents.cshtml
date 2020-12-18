@@ -1,0 +1,43 @@
+﻿@{
+    this.ViewData["Title"] = "Events";
+}
+
+<div class="container" style="padding-bottom: 70px">
+    <h1 class="text-center">@this.ViewData["Title"]</h1>
+    <div>
+        <table class="table table-striped table-active">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center" style="color: #d9ba85">#</th>
+                    <th scope="col" class="text-center" style="color: #d9ba85">Event Name</th>
+                    <th scope="col" class="text-center" style="color: #d9ba85">Event Price</th>
+                    <th scope="col" class="text-center" style="color: #d9ba85">Event Image</th>
+                    <th scope="col" class="text-center" style="color: #d9ba85">Event Description</th>
+                    <th scope="col" class="text-center" style="color: #d9ba85">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 0;
+                    @foreach (var events in Model)
+                    {
+                        count++;
+                        <tr>
+                            <th scope="row">@count</th>
+                            <td class="text-center">@events.Name</td>
+                            <td class="text-center">@events.Price</td>
+                            <td class="text-center"><img src="@events.ImageUrl" class="img-fluid" alt=""></td>
+                            <td class="text-center">@events.Description</td>
+                            <td class="text-center">
+                                <ul style="padding-left: 0">
+                                    <li class="nav-link">Edit</li>
+                                    <li class="nav-link">Delete</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

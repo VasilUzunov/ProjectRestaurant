@@ -1,0 +1,46 @@
+﻿@{
+    this.ViewData["Title"] = "Menu Items";
+}
+<div class="container" style="padding-bottom: 70px">
+    <h1 class="text-center">@ViewData["Title"] </h1>
+    <div>
+        <table class="table table-striped table-active">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center" style="color: #d9ba85">#</th>
+                    <th scope="col" class="text-center" style="color: #d9ba85">Menu Item Name</th>
+                    <th scope="col" class="text-center" style="color: #d9ba85">Menu Item Price</th>
+                    <th scope="col" class="text-center" style="color: #d9ba85">Menu Item Portion Weight</th>
+                    <th scope="col" class="text-center" style="color: #d9ba85">Menu Item Category</th>
+                    <th scope="col" class="text-center" style="color: #d9ba85">Menu Item Image</th>
+                    <th scope="col" class="text-center" style="color: #d9ba85">Menu Item Description</th>
+                    <th scope="col" class="text-center" style="color: #d9ba85">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 0;
+                    @foreach (var menuItem in Model)
+                    {
+                        count++;
+                        <tr>
+                            <th scope="row">@count</th>
+                            <td class="text-center">@menuItem.Name</td>
+                            <td class="text-center">@menuItem.Price</td>
+                            <td class="text-center">@menuItem.PortionWeight</td>
+                            <td class="text-center">@menuItem.CategoryName</td>
+                            <td class="text-center"><img src="@menuItem.ImageUrl" class="img-fluid" alt=""></td>
+                            <td class="text-center">@menuItem.Description</td>
+                            <td class="text-center">
+                                <ul style="padding-left: 0">
+                                    <li class="nav-link">Edit</li>
+                                    <li class="nav-link">Delete</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

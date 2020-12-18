@@ -1,6 +1,9 @@
 ﻿@model ProjectRestaurant.Web.ViewModels.Administration.EventInputModel
+@{
+    this.ViewData["Title"] = "Create Event";
+}
 
-<h1 class="text-center">Add Event</h1>
+<h1 class="text-center">@this.ViewData["Title"]</h1>
 <form method="post" class="col-md-6 offset-md-3 text-center" enctype="multipart/form-data">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">

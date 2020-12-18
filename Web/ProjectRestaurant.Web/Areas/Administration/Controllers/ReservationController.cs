@@ -4,16 +4,16 @@
     using ProjectRestaurant.Services.Data;
     using ProjectRestaurant.Web.ViewModels.Reservation;
 
-    public class AllReservationController : AdministrationController
+    public class ReservationController : AdministrationController
     {
         private readonly IReservationsService reservationsService;
 
-        public AllReservationController(IReservationsService reservationsService)
+        public ReservationController(IReservationsService reservationsService)
         {
             this.reservationsService = reservationsService;
         }
 
-        public IActionResult AllReservations()
+        public IActionResult Reservations()
         {
             var model = this.reservationsService.GetAll<ReservationViewModel>();
             return this.View(model);

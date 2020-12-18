@@ -1,7 +1,10 @@
 ﻿@model ProjectRestaurant.Web.ViewModels.Administration.TableInputModel
+@{
+    this.ViewData["Title"] = "Create Table";
+}
 
-<h1 class="text-center">Add Table</h1>
-<form method="post" class="col-md-6 offset-md-3 text-center"  enctype="multipart/form-data">
+<h1 class="text-center">@ViewData["Title"] </h1>
+<form method="post" class="col-md-6 offset-md-3 text-center" enctype="multipart/form-data">
     <div class="form-group">
         <div asp-validation-summary="All" class="text-danger"></div>
 
@@ -23,7 +26,7 @@
             <option>Rectangle</option>
         </select>
         <span asp-validation-for="ShapeOfTable" class="text-danger"></span>
-        
+
         <div class="form-group">
             <label asp-for="NumberOfTable"></label>
             <input asp-for="NumberOfTable" class="form-control">

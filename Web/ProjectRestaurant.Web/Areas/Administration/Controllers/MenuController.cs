@@ -1,4 +1,6 @@
-﻿namespace ProjectRestaurant.Web.Areas.Administration.Controllers
+﻿using ProjectRestaurant.Web.ViewModels.Menu;
+
+namespace ProjectRestaurant.Web.Areas.Administration.Controllers
 {
     using System.Threading.Tasks;
 
@@ -7,32 +9,38 @@
     using ProjectRestaurant.Services.Data;
     using ProjectRestaurant.Web.ViewModels.Administration;
 
-    public class AddToMenuController : AdministrationController
+    public class MenuController : AdministrationController
     {
         private readonly IMenuService menuService;
         private readonly IWebHostEnvironment environment;
 
-        public AddToMenuController(IMenuService menuService, IWebHostEnvironment environment)
+        public MenuController(IMenuService menuService, IWebHostEnvironment environment)
         {
             this.menuService = menuService;
             this.environment = environment;
         }
 
-        public IActionResult AddToMenu()
+        public IActionResult AddMenuItems()
         {
             return this.View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddToMenu(MenuInputModel input)
+        public async Task<IActionResult> AddMenuItems(MenuInputModel input)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.View(input);
             }
 
-            var ex = this.menuService.CreateAsyncMenuItem(input, $"{this.environment.WebRootPath}/images");
+            await this.menuService.CreateAsyncMenuItem(input, $"{this.environment.WebRootPath}/images");
             return this.Redirect("/Administration/AddToMenu/AddToMenu");
+        }
+
+        public IActionResult AllMenuItems()
+        {
+            var model = this.menuService.GetAll<MenuViewModel>();
+            return this.View(model);
         }
     }
 }

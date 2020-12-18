@@ -6,11 +6,11 @@
     using ProjectRestaurant.Services.Data;
     using ProjectRestaurant.Web.ViewModels.Administration;
 
-    public class AddTableController : AdministrationController
+    public class TableController : AdministrationController
     {
         private readonly ITableService tableService;
 
-        public AddTableController(ITableService tableService)
+        public TableController(ITableService tableService)
         {
             this.tableService = tableService;
         }
@@ -30,6 +30,12 @@
 
             await this.tableService.CreateAsyncTable(input);
             return this.Redirect("/Administration/AddTable/AddTables");
+        }
+
+        public IActionResult AllTables()
+        {
+            var model = this.tableService.GetAll<TableViewModel>();
+            return this.View(model);
         }
     }
 }

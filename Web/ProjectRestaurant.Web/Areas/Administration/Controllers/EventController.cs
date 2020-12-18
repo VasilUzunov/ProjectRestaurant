@@ -1,4 +1,6 @@
-﻿namespace ProjectRestaurant.Web.Areas.Administration.Controllers
+﻿using ProjectRestaurant.Web.ViewModels.Event;
+
+namespace ProjectRestaurant.Web.Areas.Administration.Controllers
 {
     using System.Threading.Tasks;
 
@@ -34,6 +36,12 @@
             await this.eventService.CreateAsyncEvent(input, $"{this.environment.WebRootPath}/images");
 
             return this.Redirect("/Administration/Event/AddEvents");
+        }
+
+        public IActionResult AllEvents()
+        {
+            var model = this.eventService.GetAll<EventViewModel>();
+            return this.View(model);
         }
     }
 }
