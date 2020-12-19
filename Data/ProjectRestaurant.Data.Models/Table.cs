@@ -19,7 +19,8 @@
         [Required]
         [MaxLength(10)]
         public string ShapeOfTable { get; set; }
-
+        
+        [Required]
         public int TableNumber { get; set; }
 
         public virtual ICollection<Reservation> Reservations { get; set; }

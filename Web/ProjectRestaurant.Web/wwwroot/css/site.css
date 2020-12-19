@@ -159,4 +159,41 @@ body {
     font-size: 15px;
 }
 
+.star-color {
+    color: #ffc107;
+}
+
+.section-height {
+    height: 30%
+}
+
+.all-reservations {
+    color: #d9ba85;
+}
+
+.reservation-hour {
+    border-color: #625b4b;
+    background: #0c0b09;
+    color: #a49b89;
+}
+
+.reservation-date {
+    color: #a49b89;
+}
+
+.social-links {
+    color: #cda45e;
+}
+
+.vote-stars {
+    color: white;
+    border-color: #625b4b;
+}
+
+.vote-review {
+    border-color: #625b4b;
+    background: #0c0b09;
+    color: white;
+}
+
 

@@ -50,12 +50,12 @@
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your email")]
+            [EmailAddress (ErrorMessage = "Please enter valid email address")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your password")]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
@@ -66,23 +66,23 @@
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-            [Required]
+            [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your first name")]
             [StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
             [Display(Name = "First Name")]
             public string FirstName { get; set; }
 
-            [Required]
+            [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your last name")]
             [StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
 
-            [Required]
+            [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your address")]
             [StringLength(80, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 10)]
             [Display(Name = "Address")]
             public string Address { get; set; }
 
-            [Required]
-            [Phone]
+            [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your phone")]
+            [Phone(ErrorMessage = "Please enter valid phone number")]
             [Display(Name = "Phone Number")]
             public string PhoneNumber { get; set; }
         }

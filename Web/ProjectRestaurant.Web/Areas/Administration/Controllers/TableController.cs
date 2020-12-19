@@ -29,7 +29,7 @@
             }
 
             await this.tableService.CreateAsyncTable(input);
-            return this.Redirect("/Administration/AddTable/AddTables");
+            return this.View();
         }
 
         public IActionResult AllTables()

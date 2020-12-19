@@ -12,9 +12,10 @@
     using ProjectRestaurant.Data.Models;
     using ProjectRestaurant.Services.Data;
     using ProjectRestaurant.Services.Messaging;
-    using ProjectRestaurant.Web.ViewModels.Reservation;
     using ProjectRestaurant.Web.Areas.Identity.Pages.Account.Manage;
+    using ProjectRestaurant.Web.ViewModels.Reservation;
 
+    [Authorize]
     public class ReservationController : BaseController
     {
         private readonly IReservationsService reservationsService;
@@ -40,6 +41,7 @@
             return this.View(all);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Reservation(ReservationInputModel input)
         {
@@ -62,7 +64,7 @@
                 .AppendLine($"For: {input.Date} at {input.Hour}:{input.Minutes}")
                 .AppendLine($"Your table is №{input.Table} for {input.NumberOfPeople} people");
 
-            var sms = this.smsSender.SendSmsAsync(trimmedPhone, message.ToString().TrimEnd());
+            await this.smsSender.SendSmsAsync(trimmedPhone, message.ToString().TrimEnd());
 
             return this.View();
         }

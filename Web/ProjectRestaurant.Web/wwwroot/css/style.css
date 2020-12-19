@@ -477,7 +477,7 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-#hero{
+#heroHome{
     width: 100%;
     height: 100vh;
     background: url("../img/hero-bg.jpg") top center;
@@ -486,7 +486,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
 }
 
-#hero:before {
+#heroHome:before {
         content: "";
         background: rgba(0, 0, 0, 0.5);
         position: absolute;
@@ -496,17 +496,17 @@ h1, h2, h3, h4, h5, h6 {
         right: 0;
     }
 
-    #hero .container {
+    #heroHome .container {
         padding-top: 110px;
     }
 
 @media (max-width: 992px) {
-    #hero .container {
+    #heroHome .container {
         padding-top: 98px;
     }
 }
 
-#hero h1 {
+#heroHome h1 {
     margin: 0;
     font-size: 48px;
     font-weight: 700;
@@ -515,21 +515,21 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Poppins", sans-serif;
 }
 
-    #hero h1 span {
+    #heroHome h1 span {
         color: #cda45e;
     }
 
-#hero h2 {
+#heroHome h2 {
     color: #eee;
     margin-bottom: 10px 0 0 0;
     font-size: 22px;
 }
 
-#hero .btns {
+#heroHome .btns {
     margin-top: 30px;
 }
 
-#hero .btn-menu, #hero .btn-book {
+#heroHome .btn-menu, #heroHome .btn-book {
     font-weight: 600;
     font-size: 13px;
     letter-spacing: 0.5px;
@@ -543,16 +543,16 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid #cda45e;
 }
 
-    #hero .btn-menu:hover, #hero .btn-book:hover {
+    #heroHome .btn-menu:hover, #heroHome .btn-book:hover {
         background: #cda45e;
         color: #fff;
     }
 
-#hero .btn-book {
+#heroHome .btn-book {
     margin-left: 15px;
 }
 
-#hero .play-btn {
+#heroHome .play-btn {
     width: 94px;
     height: 94px;
     background: radial-gradient(#cda45e 50%, rgba(205, 164, 94, 0.4) 52%);
@@ -562,7 +562,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
-    #hero .play-btn::after {
+    #heroHome .play-btn::after {
         content: '';
         position: absolute;
         left: 50%;
@@ -577,7 +577,7 @@ h1, h2, h3, h4, h5, h6 {
         transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
 
-    #hero .play-btn::before {
+    #heroHome .play-btn::before {
         content: '';
         position: absolute;
         width: 120px;
@@ -600,12 +600,12 @@ h1, h2, h3, h4, h5, h6 {
         background: rgba(198, 16, 0, 0);
     }
 
-    #hero .play-btn:hover::after {
+    #heroHome .play-btn:hover::after {
         border-left: 15px solid #cda45e;
         transform: scale(20);
     }
 
-    #hero .play-btn:hover::before {
+    #heroHome .play-btn:hover::before {
         content: '';
         position: absolute;
         left: 50%;
@@ -624,35 +624,35 @@ h1, h2, h3, h4, h5, h6 {
     }
 
 @media (min-width: 1024px) {
-    #hero {
+    #heroHome {
         background-attachment: fixed;
     }
 }
 
 @media (max-width: 992px) {
-    #hero .play-btn {
+    #heroHome .play-btn {
         margin-top: 30px;
     }
 }
 
 @media (max-height: 500px) {
-    #hero {
+    #heroHome {
         height: auto;
     }
 
-        #hero .container {
+        #heroHome .container {
             padding-top: 130px;
             padding-bottom: 60px;
         }
 }
 
 @media (max-width: 768px) {
-    #hero h1 {
+    #heroHome h1 {
         font-size: 28px;
         line-height: 36px;
     }
 
-    #hero h2 {
+    #heroHome h2 {
         font-size: 18px;
         line-height: 24px;
     }
@@ -686,7 +686,7 @@ h1, h2, h3, h4, h5, h6 {
 /*Hero1*/
 
 
-#hero1 {
+#heroReservation {
     width: 100%;
     height: 50vh;
     background: url("../img/gallery-1.jpg") top center;
@@ -695,7 +695,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
 }
 
-    #hero1:before {
+    #heroReservation:before {
         content: "";
         background: rgba(0, 0, 0, 0.5);
         position: absolute;
@@ -705,17 +705,17 @@ h1, h2, h3, h4, h5, h6 {
         right: 0;
     }
 
-    #hero1 .container {
+    #heroReservation .container {
         padding-top: 110px;
     }
 
 @media (max-width: 992px) {
-    #hero1 .container {
+    #heroReservation .container {
         padding-top: 98px;
     }
 }
 
-#hero1 h1 {
+#heroReservation h1 {
     margin: 0;
     font-size: 48px;
     font-weight: 700;
@@ -724,21 +724,21 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Poppins", sans-serif;
 }
 
-    #hero1 h1 span {
+    #heroReservation h1 span {
         color: #cda45e;
     }
 
-#hero1 h2 {
+#heroReservation h2 {
     color: #eee;
     margin-bottom: 10px 0 0 0;
     font-size: 22px;
 }
 
-#hero1 .btns {
+#heroReservation .btns {
     margin-top: 30px;
 }
 
-#hero1 .btn-menu, #hero1 .btn-book {
+#heroReservation .btn-menu, #heroReservation .btn-book {
     font-weight: 600;
     font-size: 13px;
     letter-spacing: 0.5px;
@@ -752,16 +752,16 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid #cda45e;
 }
 
-    #hero1 .btn-menu:hover, #hero1 .btn-book:hover {
+    #heroReservation .btn-menu:hover, #heroReservation .btn-book:hover {
         background: #cda45e;
         color: #fff;
     }
 
-#hero1 .btn-book {
+#heroReservation .btn-book {
     margin-left: 15px;
 }
 
-#hero1 .play-btn {
+#heroReservation .play-btn {
     width: 94px;
     height: 94px;
     background: radial-gradient(#cda45e 50%, rgba(205, 164, 94, 0.4) 52%);
@@ -771,7 +771,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
-    #hero1 .play-btn::after {
+    #heroReservation .play-btn::after {
         content: '';
         position: absolute;
         left: 50%;
@@ -786,7 +786,7 @@ h1, h2, h3, h4, h5, h6 {
         transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
 
-    #hero1 .play-btn::before {
+    #heroReservation .play-btn::before {
         content: '';
         position: absolute;
         width: 120px;
@@ -809,12 +809,12 @@ h1, h2, h3, h4, h5, h6 {
         background: rgba(198, 16, 0, 0);
     }
 
-    #hero1 .play-btn:hover::after {
+    #heroReservation .play-btn:hover::after {
         border-left: 15px solid #cda45e;
         transform: scale(20);
     }
 
-    #hero1 .play-btn:hover::before {
+    #heroReservation .play-btn:hover::before {
         content: '';
         position: absolute;
         left: 50%;
@@ -833,35 +833,35 @@ h1, h2, h3, h4, h5, h6 {
     }
 
 @media (min-width: 1024px) {
-    #hero1 {
+    #heroReservation {
         background-attachment: fixed;
     }
 }
 
 @media (max-width: 992px) {
-    #hero1 .play-btn {
+    #heroReservation .play-btn {
         margin-top: 30px;
     }
 }
 
 @media (max-height: 500px) {
-    #hero1 {
+    #heroReservation {
         height: auto;
     }
 
-        #hero1 .container {
+        #heroReservation .container {
             padding-top: 130px;
             padding-bottom: 60px;
         }
 }
 
 @media (max-width: 768px) {
-    #hero1 h1 {
+    #heroReservation h1 {
         font-size: 28px;
         line-height: 36px;
     }
 
-    #hero1 h2 {
+    #heroReservation h2 {
         font-size: 18px;
         line-height: 24px;
     }
@@ -948,7 +948,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 30px;
 }
 
-#hero2 .btn-menu, #hero1 .btn-book {
+#hero2 .btn-menu, #heroReservation .btn-book {
     font-weight: 600;
     font-size: 13px;
     letter-spacing: 0.5px;
@@ -962,7 +962,7 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid #cda45e;
 }
 
-    #hero2 .btn-menu:hover, #hero1 .btn-book:hover {
+    #hero2 .btn-menu:hover, #heroReservation .btn-book:hover {
         background: #cda45e;
         color: #fff;
     }
@@ -1106,7 +1106,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /*Hero3.....*/
 
-#hero3 {
+#heroMenu {
     width: 100%;
     height: 50vh;
     background: url("../img/menu.jpg") top center;
@@ -1115,7 +1115,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
 }
 
-    #hero3:before {
+    #heroMenu:before {
         content: "";
         background: rgba(0, 0, 0, 0.5);
         position: absolute;
@@ -1125,17 +1125,17 @@ h1, h2, h3, h4, h5, h6 {
         right: 0;
     }
 
-    #hero3 .container {
+    #heroMenu .container {
         padding-top: 110px;
     }
 
 @media (max-width: 992px) {
-    #hero3 .container {
+    #heroMenu .container {
         padding-top: 98px;
     }
 }
 
-#hero3 h1 {
+#heroMenu h1 {
     margin: 0;
     font-size: 48px;
     font-weight: 700;
@@ -1144,21 +1144,21 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Poppins", sans-serif;
 }
 
-    #hero3 h1 span {
+    #heroMenu h1 span {
         color: #cda45e;
     }
 
-#hero3 h2 {
+#heroMenu h2 {
     color: #eee;
     margin-bottom: 10px 0 0 0;
     font-size: 22px;
 }
 
-#hero3 .btns {
+#heroMenu .btns {
     margin-top: 30px;
 }
 
-#hero3 .btn-menu, #hero1 .btn-book {
+#heroMenu .btn-menu, #heroReservation .btn-book {
     font-weight: 600;
     font-size: 13px;
     letter-spacing: 0.5px;
@@ -1172,16 +1172,16 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid #cda45e;
 }
 
-    #hero3 .btn-menu:hover, #hero1 .btn-book:hover {
+    #heroMenu .btn-menu:hover, #heroReservation .btn-book:hover {
         background: #cda45e;
         color: #fff;
     }
 
-#hero3 .btn-book {
+#heroMenu .btn-book {
     margin-left: 15px;
 }
 
-#hero3 .play-btn {
+#heroMenu .play-btn {
     width: 94px;
     height: 94px;
     background: radial-gradient(#cda45e 50%, rgba(205, 164, 94, 0.4) 52%);
@@ -1191,7 +1191,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
-    #hero3 .play-btn::after {
+    #heroMenu .play-btn::after {
         content: '';
         position: absolute;
         left: 50%;
@@ -1206,7 +1206,7 @@ h1, h2, h3, h4, h5, h6 {
         transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
 
-    #hero3 .play-btn::before {
+    #heroMenu .play-btn::before {
         content: '';
         position: absolute;
         width: 120px;
@@ -1229,12 +1229,12 @@ h1, h2, h3, h4, h5, h6 {
         background: rgba(198, 16, 0, 0);
     }
 
-    #hero3 .play-btn:hover::after {
+    #heroMenu .play-btn:hover::after {
         border-left: 15px solid #cda45e;
         transform: scale(20);
     }
 
-    #hero3 .play-btn:hover::before {
+    #heroMenu .play-btn:hover::before {
         content: '';
         position: absolute;
         left: 50%;
@@ -1253,35 +1253,35 @@ h1, h2, h3, h4, h5, h6 {
     }
 
 @media (min-width: 1024px) {
-    #hero3 {
+    #heroMenu {
         background-attachment: fixed;
     }
 }
 
 @media (max-width: 992px) {
-    #hero3 .play-btn {
+    #heroMenu .play-btn {
         margin-top: 30px;
     }
 }
 
 @media (max-height: 500px) {
-    #hero3 {
+    #heroMenu {
         height: auto;
     }
 
-        #hero3 .container {
+        #heroMenu .container {
             padding-top: 130px;
             padding-bottom: 60px;
         }
 }
 
 @media (max-width: 768px) {
-    #hero3 h1 {
+    #heroMenu h1 {
         font-size: 28px;
         line-height: 36px;
     }
 
-    #hero3 h2 {
+    #heroMenu h2 {
         font-size: 18px;
         line-height: 24px;
     }
@@ -1318,7 +1318,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-#hero4 {
+#heroAllReservation {
     width: 100%;
     height: 50vh;
     background: url("../img/table_paper_pens_writing_67592_800x600.jpg") top center;
@@ -1327,7 +1327,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
 }
 
-    #hero4:before {
+    #heroAllReservation:before {
         content: "";
         background: rgba(0, 0, 0, 0.5);
         position: absolute;
@@ -1337,17 +1337,17 @@ h1, h2, h3, h4, h5, h6 {
         right: 0;
     }
 
-    #hero4 .container {
+    #heroAllReservation .container {
         padding-top: 110px;
     }
 
 @media (max-width: 992px) {
-    #hero4 .container {
+    #heroAllReservation .container {
         padding-top: 98px;
     }
 }
 
-#hero4 h1 {
+#heroAllReservation h1 {
     margin: 0;
     font-size: 48px;
     font-weight: 700;
@@ -1356,21 +1356,21 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Poppins", sans-serif;
 }
 
-    #hero4 h1 span {
+    #heroAllReservation h1 span {
         color: #cda45e;
     }
 
-#hero4 h2 {
+#heroAllReservation h2 {
     color: #eee;
     margin-bottom: 10px 0 0 0;
     font-size: 22px;
 }
 
-#hero4 .btns {
+#heroAllReservation .btns {
     margin-top: 30px;
 }
 
-#hero4 .btn-menu, #hero1 .btn-book {
+#heroAllReservation .btn-menu, #heroReservation .btn-book {
     font-weight: 600;
     font-size: 13px;
     letter-spacing: 0.5px;
@@ -1384,16 +1384,16 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid #cda45e;
 }
 
-    #hero4 .btn-menu:hover, #hero1 .btn-book:hover {
+    #heroAllReservation .btn-menu:hover, #heroReservation .btn-book:hover {
         background: #cda45e;
         color: #fff;
     }
 
-#hero4 .btn-book {
+#heroAllReservation .btn-book {
     margin-left: 15px;
 }
 
-#hero4 .play-btn {
+#heroAllReservation .play-btn {
     width: 94px;
     height: 94px;
     background: radial-gradient(#cda45e 50%, rgba(205, 164, 94, 0.4) 52%);
@@ -1403,7 +1403,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
-    #hero4 .play-btn::after {
+    #heroAllReservation .play-btn::after {
         content: '';
         position: absolute;
         left: 50%;
@@ -1418,7 +1418,7 @@ h1, h2, h3, h4, h5, h6 {
         transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
 
-    #hero4 .play-btn::before {
+    #heroAllReservation .play-btn::before {
         content: '';
         position: absolute;
         width: 120px;
@@ -1441,12 +1441,12 @@ h1, h2, h3, h4, h5, h6 {
         background: rgba(198, 16, 0, 0);
     }
 
-    #hero4 .play-btn:hover::after {
+    #heroAllReservation .play-btn:hover::after {
         border-left: 15px solid #cda45e;
         transform: scale(20);
     }
 
-    #hero4 .play-btn:hover::before {
+    #heroAllReservation .play-btn:hover::before {
         content: '';
         position: absolute;
         left: 50%;
@@ -1465,35 +1465,35 @@ h1, h2, h3, h4, h5, h6 {
     }
 
 @media (min-width: 1024px) {
-    #hero4 {
+    #heroAllReservation {
         background-attachment: fixed;
     }
 }
 
 @media (max-width: 992px) {
-    #hero4 .play-btn {
+    #heroAllReservation .play-btn {
         margin-top: 30px;
     }
 }
 
 @media (max-height: 500px) {
-    #hero4 {
+    #heroAllReservation {
         height: auto;
     }
 
-        #hero4 .container {
+        #heroAllReservation .container {
             padding-top: 130px;
             padding-bottom: 60px;
         }
 }
 
 @media (max-width: 768px) {
-    #hero4 h1 {
+    #heroAllReservation h1 {
         font-size: 28px;
         line-height: 36px;
     }
 
-    #hero4 h2 {
+    #heroAllReservation h2 {
         font-size: 18px;
         line-height: 24px;
     }

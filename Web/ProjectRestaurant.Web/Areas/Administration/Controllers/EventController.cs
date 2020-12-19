@@ -35,7 +35,7 @@ namespace ProjectRestaurant.Web.Areas.Administration.Controllers
 
             await this.eventService.CreateAsyncEvent(input, $"{this.environment.WebRootPath}/images");
 
-            return this.Redirect("/Administration/Event/AddEvents");
+            return this.View();
         }
 
         public IActionResult AllEvents()

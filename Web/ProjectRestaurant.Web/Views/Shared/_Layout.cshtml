@@ -2,10 +2,14 @@
 @using ProjectRestaurant.Data.Models
 @inject SignInManager<ApplicationUser> SignInManager
 @inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@{
+    this.ViewData["Title"] = "Pause Restaurant";
+}
+
 <head>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Pause Restaurant</title>
+    <title>@this.ViewData["Title"]</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -91,11 +95,11 @@
                             <strong>Email:</strong> vasil6062@gmail.com<br>
                         </p>
                         <div class="social-links mt-3">
-                            <a href="https://twitter.com/" class="twitter"><i class="bx bxl-twitter" style="color: #cda45e"></i></a>
-                            <a href="https://www.facebook.com/" class="facebook"><i class="bx bxl-facebook" style="color: #cda45e"></i></a>
-                            <a href="https://www.instagram.com/" class="instagram"><i class="bx bxl-instagram" style="color: #cda45e"></i></a>
-                            <a href="https://www.skype.com/bg/" class="google-plus"><i class="bx bxl-skype" style="color: #cda45e"></i></a>
-                            <a href="https://www.linkedin.com/" class="linkedin"><i class="bx bxl-linkedin" style="color: #cda45e"></i></a>
+                            <a href="https://twitter.com/" class="twitter"><i class="bx bxl-twitter social-links" ></i></a>
+                            <a href="https://www.facebook.com/" class="facebook"><i class="bx bxl-facebook social-links" ></i></a>
+                            <a href="https://www.instagram.com/" class="instagram"><i class="bx bxl-instagram social-links" ></i></a>
+                            <a href="https://www.skype.com/bg/" class="google-plus"><i class="bx bxl-skype social-links" ></i></a>
+                            <a href="https://www.linkedin.com/" class="linkedin"><i class="bx bxl-linkedin social-links" ></i></a>
                         </div>
                     </div>
                 </div>
@@ -118,7 +122,6 @@
                     <form method="post" asp-controller="Home" asp-action="SendToEmail" autocomplete="off">
                         <input type="email" name="email" required><input type="submit" value="Subscribe">
                         <input type="hidden" id="RecaptchaValue" name="RecaptchaValue" />
-                        <button hidden type="submit"></button>
                     </form>
                 </div>
 
@@ -152,19 +155,19 @@
                         <h2 class="bold rating-header">
                             <span class="selected-rating">0</span><small> / 5</small>
                         </h2>
-                        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="1" id="rating-star-1" style="color: white; border-color: #625b4b">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="2" id="rating-star-2" style="color: white; border-color: #625b4b">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="3" id="rating-star-3" style="color: white; border-color: #625b4b">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="4" id="rating-star-4" style="color: white; border-color: #625b4b">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" class="btnrating btn btn-default btn-lg" data-attr="5" id="rating-star-5" style="color: white; border-color: #625b4b">
+                        <button type="button" class="btnrating btn btn-default btn-lg vote-stars" data-attr="1" id="rating-star-1">
+                            <i class="fa fa-star" aria-hidden="true"></i>                                             
+                        </button>                                                                                     
+                        <button type="button" class="btnrating btn btn-default btn-lg vote-stars" data-attr="2" id="rating-star-2">
+                            <i class="fa fa-star" aria-hidden="true"></i>                                             
+                        </button>                                                                                     
+                        <button type="button" class="btnrating btn btn-default btn-lg vote-stars" data-attr="3" id="rating-star-3">
+                            <i class="fa fa-star" aria-hidden="true"></i>                                             
+                        </button>                                                                                     
+                        <button type="button" class="btnrating btn btn-default btn-lg vote-stars" data-attr="4" id="rating-star-4">
+                            <i class="fa fa-star" aria-hidden="true"></i>                                             
+                        </button>                                                                                     
+                        <button type="button" class="btnrating btn btn-default btn-lg vote-stars" data-attr="5" id="rating-star-5">
                             <i class="fa fa-star" aria-hidden="true"></i>
                         </button>
                     </div>

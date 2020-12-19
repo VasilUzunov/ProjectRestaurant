@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
+    using ProjectRestaurant.Common;
     using ProjectRestaurant.Services.Data;
     using ProjectRestaurant.Services.Messaging;
     using ProjectRestaurant.Web.ViewModels;
@@ -57,14 +58,13 @@
                 {
                     this.SetFlash("You must write your email!");
                 }
-
                 return this.RedirectToAction(nameof(this.Index));
             }
 
             await this.subscribeService.AddAsyncSubscriber(input.Email);
             var html = new StringBuilder();
             html.AppendLine($"<h1>You are subscribed for our newsletter!</h1>");
-            await this.emailSender.SendEmailAsync("vasil6062@abv.bg", "Pause Restaurant", input.Email, "Subscribe", html.ToString());
+            await this.emailSender.SendEmailAsync(GlobalConstants.MyEmail, GlobalConstants.RestaurantName, input.Email, "Subscribe", html.ToString());
             return this.RedirectToAction(nameof(this.Index));
         }
     }

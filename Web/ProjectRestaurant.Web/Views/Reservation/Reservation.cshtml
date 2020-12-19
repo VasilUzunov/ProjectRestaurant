@@ -1,11 +1,13 @@
 ﻿@model ProjectRestaurant.Web.ViewModels.Reservation.ReservationInputModel
+@{
+    this.ViewData["Title"] = "Make your Reservation";
+}
 
-
-<section id="hero1" class="flex-fill d-flex align-items-center book">
+<section id="heroReservation" class="flex-fill d-flex align-items-center book">
     <div class="container position-relative text-center text-lg-left " data-aos="zoom-in" data-aos-delay="100">
         <div class="row">
             <div class="col-lg-8">
-                <h1>Make your Reservation!</h1>
+                <h1>@this.ViewData["Title"]</h1>
             </div>
         </div>
     </div>
@@ -19,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <img src="/img/tables-scheme-1.png" class="reservation img-fluid" alt=""/>
+                <img src="/img/tables-scheme-1.png" class="reservation img-fluid" alt="" />
             </div>
 
             <div class="col-lg-6">
@@ -60,10 +62,10 @@
                     </div>
                     <div class="form-row">
                         <div class="col-lg-6 col-md-8 form-group">
-                            <input asp-for="Table"  type="number" class="form-control" placeholder="Preferred table" required >
+                            <input asp-for="Table" type="number" class="form-control" placeholder="Preferred table" required>
                         </div>
                         <div class="col-lg-6 col-md-8 form-group">
-                            <input asp-for="NumberOfPeople" type="number" class="form-control" placeholder="# of people" required >
+                            <input asp-for="NumberOfPeople" type="number" class="form-control" placeholder="# of people" required>
                         </div>
                     </div>
                     <div class="form-group">

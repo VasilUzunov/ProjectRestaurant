@@ -1,4 +1,6 @@
-﻿namespace ProjectRestaurant.Web.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace ProjectRestaurant.Web.Controllers
 {
     using System.Security.Claims;
     using System.Threading.Tasks;
@@ -7,6 +9,7 @@
     using ProjectRestaurant.Services.Data;
     using ProjectRestaurant.Web.ViewModels.Vote;
 
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class VoteController : BaseController

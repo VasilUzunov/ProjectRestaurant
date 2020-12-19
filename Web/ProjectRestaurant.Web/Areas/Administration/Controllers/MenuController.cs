@@ -34,7 +34,7 @@ namespace ProjectRestaurant.Web.Areas.Administration.Controllers
             }
 
             await this.menuService.CreateAsyncMenuItem(input, $"{this.environment.WebRootPath}/images");
-            return this.Redirect("/Administration/AddToMenu/AddToMenu");
+            return this.View();
         }
 
         public IActionResult AllMenuItems()

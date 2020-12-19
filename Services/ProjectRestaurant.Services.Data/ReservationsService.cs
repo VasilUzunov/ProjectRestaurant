@@ -50,7 +50,7 @@
 
         public IEnumerable<T> GetAll<T>(string userId)
         {
-            var reservation = this.reservationRepository.AllAsNoTracking().Where(x => x.UserId == userId).OrderByDescending(x => x.DateAndTimeOfReservation).To<T>().ToList();
+            var reservation = this.reservationRepository.AllAsNoTracking().Where(x => x.UserId == userId).OrderByDescending(x => x.CreatedOn).To<T>().ToList();
             return reservation;
         }
 

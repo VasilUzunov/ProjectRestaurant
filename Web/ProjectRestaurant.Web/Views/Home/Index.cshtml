@@ -1,11 +1,14 @@
 ﻿@model ProjectRestaurant.Web.ViewModels.NewFolder.HomeViewModel
+@{
+    this.ViewData["Title"] = "Home";
+}
 
 <body>
-    <section id="hero" class="flex-fill d-flex align-items-center">
+    <section id="heroHome" class="flex-fill d-flex align-items-center">
         <div class="container position-relative text-center text-lg-left " data-aos="zoom-in" data-aos-delay="100">
             <div class="row">
                 <div class="col-lg-8">
-                    <h1>Welcome to <span>Pause</span></h1>
+                    <h1>Welcome To <span>Pause</span></h1>
                     <h2>Always delivering great food!</h2>
 
                     <div class="btns">
@@ -26,7 +29,7 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <p>About us</p>
+                    <p>About Us</p>
                 </div>
 
                 <div class="row">
@@ -36,20 +39,31 @@
                         </div>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                        <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+                        <h3>Gourmet restaurant for people with style!</h3>
                         <p class="font-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua.
+                            With the growing needs of connoisseurs of truly quality cuisine,
+                            in Bulgaria was born the idea of ​​creating Pause - a restaurant different from all others.
                         </p>
-                        <ul>
-                            <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                            <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                            <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                        </ul>
                         <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum
+                            There is also a rich and varied assortment of wines from all over the world,
+                            stored in suitable premises, at a certain environment and temperature.
+                        </p>
+                        <p>
+                            Maintaining an innovative, extremely interesting and healthy way of cooking
+                            is one of the main priorities of Pause Restaurant. Selecting the highest quality products
+                            from around the world, combining them with local herbs and fresh wild spices,
+                            the classic dishes are served with a unique style in new, non-standard combinations.
+                        </p>
+                        <p>
+                            The service in the restaurant Pause is embedded in the basic philosophy and concept of the restaurant.
+                            Our mission is to take care of each client as we take care of the dearest guests
+                            in our own home - with unforgettable taste, emotion and experience.
+                        </p>
+                        <p>
+                            Welcome!
+                        </p>
+                        <p>
+                            We are expecting you!
                         </p>
                     </div>
                 </div>
@@ -97,7 +111,7 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <p>Organize Your Events in our Restaurant</p>
+                    <p>Organize Your Events In Our Restaurant</p>
                 </div>
 
                 <div class="owl-carousel events-carousel" data-aos="fade-up" data-aos-delay="100">
@@ -126,7 +140,7 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <p>What they're saying about us</p>
+                    <p>What They're Saying About Us</p>
                 </div>
 
                 <div class="owl-carousel testimonials-carousel" data-aos="zoom-in" data-aos-delay="100">
@@ -143,7 +157,7 @@
                             {
                                 if (@votes.Star >= i)
                                 {
-                                    <i class="fa fa-star" style="color: #ffc107"></i>
+                                    <i class="fa fa-star star-color"></i>
                                 }
                                 else
                                 {

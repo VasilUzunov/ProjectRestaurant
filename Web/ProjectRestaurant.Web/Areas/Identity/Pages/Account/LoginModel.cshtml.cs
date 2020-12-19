@@ -45,11 +45,11 @@
 
         public class InputModel
         {
-            [Required]
+            [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your email")]
             [EmailAddress]
             public string Email { get; set; }
 
-            [Required]
+            [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your password")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
