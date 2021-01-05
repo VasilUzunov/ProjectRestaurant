@@ -66,7 +66,7 @@
 
             await this.smsSender.SendSmsAsync(trimmedPhone, message.ToString().TrimEnd());
 
-            return this.View();
+            return this.RedirectToAction("ShowAll");
         }
     }
 }

@@ -64,7 +64,7 @@
             await this.subscribeService.AddAsyncSubscriber(input.Email);
             var html = new StringBuilder();
             html.AppendLine($"<h1>You are subscribed for our newsletter!</h1>");
-            await this.emailSender.SendEmailAsync(GlobalConstants.MyEmail, GlobalConstants.RestaurantName, input.Email, "Subscribe", html.ToString());
+            await this.emailSender.SendEmailAsync("vasil6062@abv.bg", GlobalConstants.RestaurantName, input.Email, "Subscribe", html.ToString());
             return this.RedirectToAction(nameof(this.Index));
         }
     }

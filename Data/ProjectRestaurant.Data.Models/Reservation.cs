@@ -11,7 +11,6 @@
 
         public virtual Table Table { get; set; }
 
-        [Required]
         [MaxLength(200)]
         public string Message { get; set; }
 

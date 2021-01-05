@@ -29,7 +29,7 @@
                 return this.View(input);
             }
 
-            await this.emailSender.SendEmailAsync(GlobalConstants.MyEmail, input.Email, "vasil6062@gmail.com", input.Subject + " " + "Name" + " " + input.Name, input.Message);
+            await this.emailSender.SendEmailAsync("vasil6062@abv.bg", input.Email, "vasil6062@gmail.com", input.Subject + " " + "Name" + " " + input.Name, input.Message);
 
             return this.View();
         }
