@@ -1,3 +1,6 @@
+PAUSE RESTAURANT
+
+
 👷 Built with
 
     .NET Core 5
@@ -20,6 +23,7 @@ Contributions, issues and feature requests are welcome!
 📝 License
 
 This project is licensed under MIT license.
+
 👨‍🚀 Show your support
 
 Give a ⭐ if you like this project!
